@@ -3116,7 +3116,7 @@ const REMOVE_POST_OF_ME = "REMOVE_POST_OF_ME";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/sunggooklee/Desktop/react-nodebird/inhafood/front/pages/index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! /Users/sunggooklee/Desktop/inhastore/inhafood2/front/pages/index.js */"./pages/index.js");
 
 
 /***/ }),
