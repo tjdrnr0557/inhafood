@@ -14,7 +14,7 @@ const Home = () => {
   const mainPosts = [
     {
       id: 1,
-      name: "치킨/찜닭/닭요리",
+      name: "치킨/닭",
       kindId: 1,
       content: "맛있는 치킨",
       img: "https://image.flaticon.com/icons/svg/2615/2615213.svg"
@@ -42,21 +42,21 @@ const Home = () => {
     },
     {
       id: 3,
-      name: "파스타/피자/양식",
+      name: "양식",
       kindId: 1,
       content: "파",
-      img: "https://image.flaticon.com/icons/svg/1161/1161623.svg"
+      img: "https://image.flaticon.com/icons/svg/1404/1404945.svg"
     },
     {
       id: 3,
-      name: "회/일식/돈까스",
+      name: "일식",
       kindId: 1,
       content: "회/일식/돈까스",
       img: "https://image.flaticon.com/icons/svg/2346/2346242.svg"
     },
     {
       id: 3,
-      name: "분식/컵밥",
+      name: "분식",
       kindId: 1,
       content: "분식/컵밥",
       img: "https://www.flaticon.com/premium-icon/icons/svg/2515/2515169.svg"
@@ -65,8 +65,9 @@ const Home = () => {
 
   const MainWrapper = styled.div`
     width: 100%;
-    margin-top: 3%;
-    border: 1px solid;
+    height: auto;
+    margin-top: 7%;
+    //border: 1px solid;
     display: flex;
     flex-wrap: wrap;
   `;
