@@ -160,14 +160,14 @@ const AppLayout = ({
   }))), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     gutter: 8
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
-    xs: 3,
-    md: 3
+    xs: 4,
+    md: 4
   }), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
-    xs: 18,
-    md: 18
+    xs: 16,
+    md: 16
   }, children), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
-    xs: 3,
-    md: 3
+    xs: 4,
+    md: 4
   })));
 };
 

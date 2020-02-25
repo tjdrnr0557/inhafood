@@ -39,11 +39,11 @@ const AppLayout = ({ children }) => {
         </Menu.Item>
       </Menu>
       <Row gutter={8}>
-        <Col xs={3} md={3}></Col>
-        <Col xs={18} md={18}>
+        <Col xs={4} md={4}></Col>
+        <Col xs={16} md={16}>
           {children}
         </Col>
-        <Col xs={3} md={3}></Col>
+        <Col xs={4} md={4}></Col>
       </Row>
     </div>
   );

@@ -14,33 +14,69 @@ const Home = () => {
   const mainPosts = [
     {
       id: 1,
-      name: "밥집",
+      name: "치킨/찜닭/닭요리",
       kindId: 1,
-      content: "맛있는 밥집",
-      img: ""
+      content: "맛있는 치킨",
+      img: "https://image.flaticon.com/icons/svg/2615/2615213.svg"
     },
     {
       id: 2,
       name: "고기집",
       kindId: 1,
       content: "고기집이다@@",
-      img: ""
+      img: "https://image.flaticon.com/icons/svg/1134/1134447.svg"
     },
     {
       id: 3,
-      name: "양식",
+      name: "밥집",
       kindId: 1,
-      content: "양식@@양식",
-      img: ""
+      content: "밥집",
+      img: "https://image.flaticon.com/icons/svg/454/454586.svg"
+    },
+    {
+      id: 3,
+      name: "중국집",
+      kindId: 1,
+      content: "중국집",
+      img: "https://image.flaticon.com/icons/svg/890/890051.svg"
+    },
+    {
+      id: 3,
+      name: "파스타/피자/양식",
+      kindId: 1,
+      content: "파",
+      img: "https://image.flaticon.com/icons/svg/1161/1161623.svg"
+    },
+    {
+      id: 3,
+      name: "회/일식/돈까스",
+      kindId: 1,
+      content: "회/일식/돈까스",
+      img: "https://image.flaticon.com/icons/svg/2346/2346242.svg"
+    },
+    {
+      id: 3,
+      name: "분식/컵밥",
+      kindId: 1,
+      content: "분식/컵밥",
+      img: "https://www.flaticon.com/premium-icon/icons/svg/2515/2515169.svg"
     }
   ];
 
+  const MainWrapper = styled.div`
+    width: 100%;
+    margin-top: 3%;
+    border: 1px solid;
+    display: flex;
+    flex-wrap: wrap;
+  `;
+
   return (
-    <>
+    <MainWrapper>
       {mainPosts.map(c => {
         return <KindCard key={c.id} post={c} />;
       })}
-    </>
+    </MainWrapper>
   );
 };
 
