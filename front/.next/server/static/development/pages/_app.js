@@ -133,13 +133,10 @@ const AppLayout = ({
     me
   } = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["useSelector"])(state => state.user);
 
-  const onSearch = value => {
-    next_router__WEBPACK_IMPORTED_MODULE_5___default.a.push({
-      pathname: "/hashtag",
-      query: {
-        tag: value
-      }
-    }, `/hashtag/${value}`);
+  const onSearch = value => {// Router.push(
+    //   { pathname: "/hashtag", query: { tag: value } },
+    //   `/hashtag/${value}`
+    // );
   };
 
   return __jsx("div", null, __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"], {
