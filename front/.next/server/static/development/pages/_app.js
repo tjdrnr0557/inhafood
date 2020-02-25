@@ -160,14 +160,14 @@ const AppLayout = ({
   }))), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     gutter: 8
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
-    xs: 24,
-    md: 6
-  }, me ? __jsx(_containers_UserProfile__WEBPACK_IMPORTED_MODULE_7__["default"], null) : __jsx(_containers_LoginForm__WEBPACK_IMPORTED_MODULE_6__["default"], null)), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
-    xs: 24,
-    md: 12
+    xs: 3,
+    md: 3
+  }), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
+    xs: 18,
+    md: 18
   }, children), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
-    xs: 24,
-    md: 6
+    xs: 3,
+    md: 3
   })));
 };
 

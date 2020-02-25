@@ -1,12 +1,13 @@
 import React, { useEffect, useCallback, useRef } from "react";
+import { Card } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import PostForm from "../containers/PostForm";
 import PostCard from "../containers/PostCard";
 import { LOAD_MAIN_POSTS_REQUEST } from "../reducers/post";
 
 const Home = () => {
-  const { me } = useSelector(state => state.user);
-  const { mainPosts, hasMorePost } = useSelector(state => state.post);
+  // const { me } = useSelector(state => state.user);
+  // const { mainPosts, hasMorePost } = useSelector(state => state.post);
   // const dispatch = useDispatch();
   // const countRef = useRef([]);
 
@@ -36,12 +37,11 @@ const Home = () => {
   // }, [mainPosts.length]);
 
   return (
-    <div>
-      {me && <PostForm />}
-      {mainPosts.map(c => {
-        return <PostCard key={c.id} post={c} />;
-      })}
-    </div>
+    <Card style={{ width: 300 }}>
+      <p>Card content</p>
+      <p>Card content</p>
+      <p>Card content</p>
+    </Card>
   );
 };
 
