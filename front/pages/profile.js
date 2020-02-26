@@ -124,23 +124,23 @@ const Profile = () => {
   );
 };
 
-Profile.getInitialProps = async context => {
-  const state = context.store.getState();
-  // 이 직전에 LOAD_USERS_REQUEST
-  context.store.dispatch({
-    type: LOAD_FOLLOWERS_REQUEST,
-    data: state.user.me && state.user.me.id
-  });
-  context.store.dispatch({
-    type: LOAD_FOLLOWINGS_REQUEST,
-    data: state.user.me && state.user.me.id
-  });
-  context.store.dispatch({
-    type: LOAD_USER_POSTS_REQUEST,
-    data: state.user.me && state.user.me.id
-  });
+// Profile.getInitialProps = async context => {
+//   const state = context.store.getState();
+//   // 이 직전에 LOAD_USERS_REQUEST
+//   context.store.dispatch({
+//     type: LOAD_FOLLOWERS_REQUEST,
+//     data: state.user.me && state.user.me.id
+//   });
+//   context.store.dispatch({
+//     type: LOAD_FOLLOWINGS_REQUEST,
+//     data: state.user.me && state.user.me.id
+//   });
+//   context.store.dispatch({
+//     type: LOAD_USER_POSTS_REQUEST,
+//     data: state.user.me && state.user.me.id
+//   });
 
-  // 이 쯤에서 LOAD_USERS_SUCCESS 돼서 me가 생김.
-};
+//   // 이 쯤에서 LOAD_USERS_SUCCESS 돼서 me가 생김.
+// };
 
 export default Profile;
