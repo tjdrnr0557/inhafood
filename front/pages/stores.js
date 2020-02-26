@@ -13,21 +13,21 @@ const storesArr = [
   },
   {
     id: 1,
-    name: "필바든치킨",
+    name: "닭큐멘터리",
     kindId: 1,
     description: "양념 순살이 가장 맛있는 필바든치킨",
     img: "http://www.enewstoday.co.kr/news/photo/201604/511235_134361_648.jpg"
   },
   {
     id: 1,
-    name: "필바든치킨",
+    name: "웨이사이드",
     kindId: 1,
     description: "양념 순살이 가장 맛있는 필바든치킨",
     img: "http://www.enewstoday.co.kr/news/photo/201604/511235_134361_648.jpg"
   },
   {
     id: 1,
-    name: "필바든치킨",
+    name: "치킨하우스",
     kindId: 1,
     description: "양념 순살이 가장 맛있는 필바든치킨",
     img: "http://www.enewstoday.co.kr/news/photo/201604/511235_134361_648.jpg"
@@ -48,6 +48,7 @@ const HeadWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 `;
 
 const Stores = () => {
@@ -55,6 +56,7 @@ const Stores = () => {
     <>
       <HeadWrapper>
         <h1>이곳은 치킨페이지입니다</h1>
+        <p>치킨 / 찜닭 / 닭한마리 / 닭요리</p>
       </HeadWrapper>
       <StoreWrapper>
         {storesArr.map(c => {

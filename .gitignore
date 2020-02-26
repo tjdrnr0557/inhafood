@@ -135,3 +135,5 @@ react-nodebird.pem
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+._error.js
