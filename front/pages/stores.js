@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import StoreCard from "../containers/StoreCard";
+import { PageHeader } from "antd";
 
 const storesArr = [
   {
@@ -8,46 +9,59 @@ const storesArr = [
     name: "필바든치킨",
     kindId: 1,
     description: "양념 순살이 가장 맛있는 필바든치킨",
-    img:
-      "https://m.blog.naver.com/PostView.nhn?blogId=unionwed&logNo=221014536391&proxyReferer=https%3A%2F%2Fwww.google.com%2F&view=img_1"
+    img: "http://www.enewstoday.co.kr/news/photo/201604/511235_134361_648.jpg"
   },
   {
     id: 1,
     name: "필바든치킨",
     kindId: 1,
     description: "양념 순살이 가장 맛있는 필바든치킨",
-    img: ""
+    img: "http://www.enewstoday.co.kr/news/photo/201604/511235_134361_648.jpg"
   },
   {
     id: 1,
     name: "필바든치킨",
     kindId: 1,
     description: "양념 순살이 가장 맛있는 필바든치킨",
-    img: ""
+    img: "http://www.enewstoday.co.kr/news/photo/201604/511235_134361_648.jpg"
   },
   {
     id: 1,
     name: "필바든치킨",
     kindId: 1,
     description: "양념 순살이 가장 맛있는 필바든치킨",
-    img: ""
+    img: "http://www.enewstoday.co.kr/news/photo/201604/511235_134361_648.jpg"
   }
 ];
 
 const StoreWrapper = styled.div`
   width: 100%;
-  height: auto;
-  margin-top: 7%;
+  min-height: 40rem;
   border: 1px solid;
+`;
+
+const HeadWrapper = styled.div`
+  border: 1px solid;
+  height: 10rem;
+  margin-top: 3%;
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Stores = () => {
   return (
-    <StoreWrapper>
-      {storesArr.map(c => {
-        return <StoreCard store={c} />;
-      })}
-    </StoreWrapper>
+    <>
+      <HeadWrapper>
+        <h1>이곳은 치킨페이지입니다</h1>
+      </HeadWrapper>
+      <StoreWrapper>
+        {storesArr.map(c => {
+          return <StoreCard store={c} />;
+        })}
+      </StoreWrapper>
+    </>
   );
 };
 
