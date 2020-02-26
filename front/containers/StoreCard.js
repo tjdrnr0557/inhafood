@@ -12,8 +12,9 @@ const CardWrapper = styled.div`
   display: flex;
 `;
 const EachImage = styled.img`
-  max-width: 80%;
-  max-height: 30%;
+  min-width: 30%;
+  min-height: 30%;
+  overflow: hidden;
 `;
 const EachDescription = styled.div`
   width: 100%;

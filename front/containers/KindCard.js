@@ -11,10 +11,7 @@ const ImageWrapper = styled.div`
   flex-direction: column;
   justify-content: space-around;
 `;
-const EachImage = styled.img`
-  width: 100%;
-  height: 100%;
-`;
+const EachImage = styled.img``;
 const TextWrapper = styled.h2`
   text-align: center;
 `;

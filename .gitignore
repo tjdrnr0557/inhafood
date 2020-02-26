@@ -136,4 +136,11 @@ react-nodebird.pem
 !.vscode/launch.json
 !.vscode/extensions.json
 
+pages/.manifest
+.pages-manifest.json
+
 ._error.js
+_error.js
+_error.js.map
+._error.js.map
+pages/_error.js
