@@ -153,3 +153,12 @@ node_modules
 .next/static/runtime/webpack.js.map
 .front/pages/_error.js
 .pages/_error.js
+
+pages/.manifest
+.pages-manifest.json
+
+._error.js
+_error.js
+_error.js.map
+._error.js.map
+pages/_error.js
