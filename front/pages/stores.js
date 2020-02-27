@@ -38,7 +38,6 @@ const storesArr = [
 const StoreWrapper = styled.div`
   width: 100%;
   min-height: 100%;
-  //border: 1px solid;
 `;
 
 const HeadWrapper = styled.div`
