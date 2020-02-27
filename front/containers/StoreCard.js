@@ -7,21 +7,21 @@ const CardWrapper = styled.div`
   margin-left: 5%;
   // min-height: 50%;
   //border: 1px solid;
-  padding-top: 2%;
   border-bottom: 1px solid;
-  padding: 7% 0;
+  padding: 3% 0;
   display: flex;
   @media screen and (max-width: 768px) {
     flex-direction: column;
+    padding: 7% 0;
   }
 `;
 const EachImage = styled.img`
-  width: 50%;
-  height: 50%;
+  width: 30rem;
+  height: 14rem;
   overflow: hidden;
   @media screen and (max-width: 768px) {
     width: 100%;
-    height: 100%;
+    height: 12rem;
   }
 `;
 const EachDescription = styled.div`

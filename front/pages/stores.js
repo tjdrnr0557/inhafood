@@ -43,7 +43,7 @@ const StoreWrapper = styled.div`
 
 const HeadWrapper = styled.div`
   height: 100%;
-  padding: 3% 0;
+  padding: 5% 0;
   background-color: #f7f7f7;
   // border: 1px solid;
   display: flex;
