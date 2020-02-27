@@ -9,6 +9,7 @@ const CardWrapper = styled.div`
   //border: 1px solid;
   padding-top: 2%;
   border-bottom: 1px solid;
+  padding: 7% 0;
   display: flex;
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -28,23 +29,24 @@ const EachDescription = styled.div`
   //border: 1px solid;
 `;
 
-const H1wrapper = styled.h3`
+const H1wrapper = styled.div`
    {
     padding-left: 5%;
-    // font-size: 2rem;
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.85);
     @media screen and (max-width: 768px) {
       width: 100%;
       height: 100%;
-      padding-top: 5%;
+      padding-top: 3%;
       padding-left: 0;
     }
   }
 `;
-const Pwrapper = styled.p`
-  padding-left: 5%;
+const Pwrapper = styled.div`
+  padding-left: 5.5%;
   font-size: 1rem;
   @media screen and (max-width: 768px) {
-    padding-left: 0;
+    padding-left: 0.5%;
   }
 `;
 const StoreCard = ({ store }) => {

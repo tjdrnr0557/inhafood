@@ -5,14 +5,14 @@ import StoreCard from "../containers/StoreCard";
 const storesArr = [
   {
     id: 1,
-    name: "필바든치킨",
+    name: "1. 필바든치킨",
     kindId: 1,
     description: "양념 순살이 가장 맛있는 필바든치킨",
     img: "http://www.enewstoday.co.kr/news/photo/201604/511235_134361_648.jpg"
   },
   {
     id: 1,
-    name: "닭큐멘터리",
+    name: "2. 닭큐멘터리",
     kindId: 1,
     description: "양념 순살이 가장 맛있는 필바든치킨",
     img:
@@ -20,7 +20,7 @@ const storesArr = [
   },
   {
     id: 1,
-    name: "웨이사이드",
+    name: "3. 웨이사이드",
     kindId: 1,
     description: "양념 순살이 가장 맛있는 필바든치킨",
     img:
@@ -28,7 +28,7 @@ const storesArr = [
   },
   {
     id: 1,
-    name: "치킨하우스",
+    name: "4. 치킨하우스",
     kindId: 1,
     description: "양념 순살이 가장 맛있는 필바든치킨",
     img: "http://www.enewstoday.co.kr/news/photo/201604/511235_134361_648.jpg"
@@ -43,7 +43,7 @@ const StoreWrapper = styled.div`
 
 const HeadWrapper = styled.div`
   height: 100%;
-  padding-top: 3%;
+  padding: 3% 0;
   background-color: #f7f7f7;
   // border: 1px solid;
   display: flex;
