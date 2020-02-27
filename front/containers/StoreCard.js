@@ -26,8 +26,10 @@ const EachImage = styled.img`
 `;
 const EachDescription = styled.div`
   width: 100%;
-  margin-right: 5%;
-  margin-left: 5%;
+  @media screen and (max-width: 768px) {
+    margin-right: 5%;
+    margin-left: 5%;
+  }
 `;
 
 const H1wrapper = styled.div`
