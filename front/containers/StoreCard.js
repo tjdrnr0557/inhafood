@@ -6,7 +6,6 @@ const CardWrapper = styled.div`
   margin-right: 5%;
   margin-left: 5%;
   // min-height: 50%;
-  //border: 1px solid;
   border-bottom: 1px solid;
   padding: 3% 0;
   display: flex;
