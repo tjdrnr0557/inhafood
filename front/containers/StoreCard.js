@@ -2,33 +2,58 @@ import React from "react";
 import styled from "styled-components";
 
 const CardWrapper = styled.div`
-  width: 80%;
-  margin-right: 10%;
-  margin-left: 10%;
-  min-height: 30%;
-  border: 1px solid;
-  padding-top: 3%;
-  padding-bottom: 3%;
+  width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+  // min-height: 50%;
+  //border: 1px solid;
+  padding-top: 2%;
+  border-bottom: 1px solid;
   display: flex;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 const EachImage = styled.img`
-  min-width: 30%;
-  min-height: 30%;
+  width: 50%;
+  height: 50%;
   overflow: hidden;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+  }
 `;
 const EachDescription = styled.div`
   width: 100%;
-  border: 1px solid;
+  //border: 1px solid;
+`;
+
+const H1wrapper = styled.h3`
+   {
+    padding-left: 5%;
+    // font-size: 2rem;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      height: 100%;
+      padding-top: 5%;
+      padding-left: 0;
+    }
+  }
+`;
+const Pwrapper = styled.p`
+  padding-left: 5%;
+  font-size: 1rem;
+  @media screen and (max-width: 768px) {
+    padding-left: 0;
+  }
 `;
 const StoreCard = ({ store }) => {
   return (
     <CardWrapper>
       <EachImage alt="example" src={store.img} />
       <EachDescription>
-        <h1 style={{ paddingLeft: "5%" }}>{store.name}</h1>
-        <p style={{ paddingLeft: "5%", fontSize: "1rem" }}>
-          맛있는 치킨을 제공하는 곳
-        </p>
+        <H1wrapper>{store.name}</H1wrapper>
+        <Pwrapper>맛있는 치킨을 제공하는 곳</Pwrapper>
       </EachDescription>
     </CardWrapper>
   );

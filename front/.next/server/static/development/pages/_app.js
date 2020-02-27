@@ -159,16 +159,7 @@ const AppLayout = ({
     onSearch: onSearch
   }))), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     gutter: 8
-  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
-    xs: 2,
-    md: 2
-  }), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
-    xs: 20,
-    md: 20
-  }, children), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
-    xs: 2,
-    md: 2
-  })));
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], null, children)));
 };
 
 AppLayout.propTypes = {

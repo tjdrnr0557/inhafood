@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import StoreCard from "../containers/StoreCard";
-import { PageHeader } from "antd";
 
 const storesArr = [
   {
@@ -16,14 +15,16 @@ const storesArr = [
     name: "닭큐멘터리",
     kindId: 1,
     description: "양념 순살이 가장 맛있는 필바든치킨",
-    img: "http://www.enewstoday.co.kr/news/photo/201604/511235_134361_648.jpg"
+    img:
+      "https://mblogthumb-phinf.pstatic.net/MjAxNzA1MDdfMTg3/MDAxNDk0MDgzOTk4NTU4.972mR0izakm1sqFgtBPMqXEW7rfpSttydtiQMm6lylgg.P_NxaO_-nhY_ZM9x23JQusjO8Su8uIoFPHqR8KgKiVYg.JPEG.mhj9722/IMG_5635.jpg?type=w800"
   },
   {
     id: 1,
     name: "웨이사이드",
     kindId: 1,
     description: "양념 순살이 가장 맛있는 필바든치킨",
-    img: "http://www.enewstoday.co.kr/news/photo/201604/511235_134361_648.jpg"
+    img:
+      "https://mp-seoul-image-production-s3.mangoplate.com/14039/533317_1474088500745_9216"
   },
   {
     id: 1,
@@ -36,15 +37,15 @@ const storesArr = [
 
 const StoreWrapper = styled.div`
   width: 100%;
-  min-height: 40rem;
-  border: 1px solid;
+  min-height: 100%;
+  //border: 1px solid;
 `;
 
 const HeadWrapper = styled.div`
-  border: 1px solid;
-  height: 10rem;
-  margin-top: 3%;
-  border: 1px solid;
+  height: 100%;
+  padding-top: 3%;
+  background-color: #f7f7f7;
+  // border: 1px solid;
   display: flex;
   justify-content: center;
   align-items: center;
