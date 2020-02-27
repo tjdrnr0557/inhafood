@@ -6,28 +6,28 @@ import {
   LOAD_STORE_FAILURE
 } from "../reducers/store.js";
 
-function* loadUser(action) {
+function loadStoreAPI(sname) {
+  return axios.get(`store/${sname}`);
+}
+
+function* loadStore(action) {
   try {
-    // yield call(loadUserAPI);
-    const result = yield call(loadUserAPI, action.data);
+    const result = yield call(loadStoreAPI, action.data);
     yield put({
-      // put은 dispatch 동일
-      type: LOAD_USER_SUCCESS,
-      data: result.data,
-      me: !action.data
+      type: LOAD_STORE_SUCCESS,
+      data: result.data
     });
   } catch (e) {
-    // loginAPI 실패
     console.error(e);
     yield put({
-      type: LOAD_USER_FAILURE,
+      type: LOAD_STORE_FAILURE,
       error: e
     });
   }
 }
 
-function* watchLoadUser() {
-  yield takeEvery(LOAD_USER_REQUEST, loadUser);
+function* watchLoadStore() {
+  yield takeEvery(LOAD_STORE_REQUEST, loadStore);
 }
 
 export default function* storeSaga() {

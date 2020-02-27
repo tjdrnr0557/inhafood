@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { LOAD_STORE_REQUEST } from "../reducers/post";
+
 import StoreCard from "../containers/StoreCard";
 
 const storesArr = [
@@ -51,7 +54,7 @@ const HeadWrapper = styled.div`
   flex-direction: column;
 `;
 
-const Stores = () => {
+const Store = ({ store }) => {
   return (
     <>
       <HeadWrapper>
@@ -67,6 +70,14 @@ const Stores = () => {
   );
 };
 
-// Stores.getInitialProps = async context => {};
+Store.getInitialProps = async context => {
+  const sname = context.query.sname;
+  console.log("@@@@@ store name", sname);
+  context.store.dispatch({
+    type: LOAD_STORE_REQUEST,
+    data: sname
+  });
+  return { store };
+};
 
-export default Stores;
+export default Store;
