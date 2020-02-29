@@ -6,8 +6,8 @@ import {
   LOAD_STORE_FAILURE
 } from "../reducers/store.js";
 
-function loadStoreAPI(sname) {
-  return axios.get(`store/${sname}`);
+function loadStoreAPI(storeName) {
+  return axios.get(`store/${storeName}`);
 }
 
 function* loadStore(action) {

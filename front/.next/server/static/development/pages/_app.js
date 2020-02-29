@@ -3544,8 +3544,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function loadStoreAPI(sname) {
-  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(`store/${sname}`);
+function loadStoreAPI(storeName) {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(`store/${storeName}`);
 }
 
 function* loadStore(action) {

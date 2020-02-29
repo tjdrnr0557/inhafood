@@ -156,9 +156,13 @@ node_modules
 
 pages/.manifest
 .pages-manifest.json
+pages-manifest.json
+front/.next/server/pages-manifest.json
+.front/.next/server/pages-manifest.json
 
 ._error.js
 _error.js
 _error.js.map
 ._error.js.map
 pages/_error.js
+

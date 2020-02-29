@@ -54,8 +54,8 @@ const HeadWrapper = styled.div`
   flex-direction: column;
 `;
 
-const Store = ({ sname }) => {
-  console.log("@@@sname", sname);
+const Store = ({ storeName }) => {
+  console.log("@@@storeName", storeName);
   return (
     <>
       <HeadWrapper>
@@ -72,13 +72,13 @@ const Store = ({ sname }) => {
 };
 
 Store.getInitialProps = async context => {
-  const sname = context.query.sname;
-  console.log("@@@@@ store name", sname);
+  const storeName = context.query.storeName;
+  console.log("@@@@@ store name", storeName);
   context.store.dispatch({
     type: LOAD_STORE_REQUEST,
-    data: sname
+    data: storeName
   });
-  return { sname };
+  return { storeName };
 };
 
 export default Store;
