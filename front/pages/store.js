@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { LOAD_STORE_REQUEST } from "../reducers/post";
+import { LOAD_STORE_REQUEST } from "../reducers/store";
 
 import StoreCard from "../containers/StoreCard";
 
@@ -54,7 +54,8 @@ const HeadWrapper = styled.div`
   flex-direction: column;
 `;
 
-const Store = ({ store }) => {
+const Store = ({ sname }) => {
+  console.log("@@@sname", sname);
   return (
     <>
       <HeadWrapper>
@@ -77,7 +78,7 @@ Store.getInitialProps = async context => {
     type: LOAD_STORE_REQUEST,
     data: sname
   });
-  return { store };
+  return { sname };
 };
 
 export default Store;
