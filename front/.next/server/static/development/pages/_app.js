@@ -2177,7 +2177,7 @@ const NodeBird = ({
   return __jsx(next_app__WEBPACK_IMPORTED_MODULE_9__["Container"], null, __jsx(react_redux__WEBPACK_IMPORTED_MODULE_5__["Provider"], {
     store: store
   }, __jsx(react_helmet__WEBPACK_IMPORTED_MODULE_8___default.a, {
-    title: "NodeBird",
+    title: "\uC778\uD558\uD478\uB4DC",
     htmlAttributes: {
       lang: "ko"
     },
@@ -2449,7 +2449,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./user */ "./reducers/user.js");
 /* harmony import */ var _post__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./post */ "./reducers/post.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store */ "./reducers/store.js");
+/* harmony import */ var _stores__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stores */ "./reducers/stores.js");
 
 
 
@@ -2457,7 +2457,7 @@ __webpack_require__.r(__webpack_exports__);
 const rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   user: _user__WEBPACK_IMPORTED_MODULE_1__["default"],
   post: _post__WEBPACK_IMPORTED_MODULE_2__["default"],
-  store: _store__WEBPACK_IMPORTED_MODULE_3__["default"]
+  stores: _stores__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
 
@@ -2762,10 +2762,10 @@ const LOAD_POST_FAILURE = "LOAD_POST_FAILURE";
 
 /***/ }),
 
-/***/ "./reducers/store.js":
-/*!***************************!*\
-  !*** ./reducers/store.js ***!
-  \***************************/
+/***/ "./reducers/stores.js":
+/*!****************************!*\
+  !*** ./reducers/stores.js ***!
+  \****************************/
 /*! exports provided: initialState, LOAD_STORES_REQUEST, LOAD_STORES_SUCCESS, LOAD_STORES_FAILURE, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3162,7 +3162,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user */ "./sagas/user.js");
 /* harmony import */ var _post__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./post */ "./sagas/post.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./sagas/store.js");
+/* harmony import */ var _stores__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./stores */ "./sagas/stores.js");
 
 
 
@@ -3170,7 +3170,7 @@ __webpack_require__.r(__webpack_exports__);
 
 axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.baseURL = "http://localhost:3065/api";
 function* rootSaga() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(_user__WEBPACK_IMPORTED_MODULE_2__["default"]), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(_post__WEBPACK_IMPORTED_MODULE_3__["default"]), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(_store__WEBPACK_IMPORTED_MODULE_4__["default"])]);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(_user__WEBPACK_IMPORTED_MODULE_2__["default"]), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(_post__WEBPACK_IMPORTED_MODULE_3__["default"]), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(_stores__WEBPACK_IMPORTED_MODULE_4__["default"])]);
 }
 
 /***/ }),
@@ -3525,51 +3525,51 @@ function* postSaga() {
 
 /***/ }),
 
-/***/ "./sagas/store.js":
-/*!************************!*\
-  !*** ./sagas/store.js ***!
-  \************************/
+/***/ "./sagas/stores.js":
+/*!*************************!*\
+  !*** ./sagas/stores.js ***!
+  \*************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return storeSaga; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return storesSaga; });
 /* harmony import */ var redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux-saga/effects */ "redux-saga/effects");
 /* harmony import */ var redux_saga_effects__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "axios");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _reducers_store_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../reducers/store.js */ "./reducers/store.js");
+/* harmony import */ var _reducers_stores_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../reducers/stores.js */ "./reducers/stores.js");
 
 
 
 
-function loadStoreAPI(storeName) {
-  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(`stores/${storeName}`);
+function loadStoresAPI(kindName) {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(`stores/${kindName}`);
 }
 
-function* loadStore(action) {
+function* loadStores(action) {
   try {
-    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadStoreAPI, action.data);
+    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadStoresAPI, action.data);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
-      type: _reducers_store_js__WEBPACK_IMPORTED_MODULE_2__["LOAD_STORES_SUCCESS"],
+      type: _reducers_stores_js__WEBPACK_IMPORTED_MODULE_2__["LOAD_STORES_SUCCESS"],
       data: result.data
     });
   } catch (e) {
     console.error(e);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
-      type: _reducers_store_js__WEBPACK_IMPORTED_MODULE_2__["LOAD_STORES_FAILURE"],
+      type: _reducers_stores_js__WEBPACK_IMPORTED_MODULE_2__["LOAD_STORES_FAILURE"],
       error: e
     });
   }
 }
 
-function* watchLoadStore() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_store_js__WEBPACK_IMPORTED_MODULE_2__["LOAD_STORES_REQUEST"], loadStore);
+function* watchLoadStores() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_stores_js__WEBPACK_IMPORTED_MODULE_2__["LOAD_STORES_REQUEST"], loadStores);
 }
 
-function* storeSaga() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLoadStore)]);
+function* storesSaga() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLoadStores)]);
 }
 
 /***/ }),

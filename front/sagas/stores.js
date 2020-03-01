@@ -4,15 +4,15 @@ import {
   LOAD_STORES_REQUEST,
   LOAD_STORES_SUCCESS,
   LOAD_STORES_FAILURE
-} from "../reducers/store.js";
+} from "../reducers/stores.js";
 
-function loadStoreAPI(storeName) {
-  return axios.get(`stores/${storeName}`);
+function loadStoresAPI(kindName) {
+  return axios.get(`stores/${kindName}`);
 }
 
-function* loadStore(action) {
+function* loadStores(action) {
   try {
-    const result = yield call(loadStoreAPI, action.data);
+    const result = yield call(loadStoresAPI, action.data);
     yield put({
       type: LOAD_STORES_SUCCESS,
       data: result.data
@@ -26,10 +26,10 @@ function* loadStore(action) {
   }
 }
 
-function* watchLoadStore() {
-  yield takeEvery(LOAD_STORES_REQUEST, loadStore);
+function* watchLoadStores() {
+  yield takeEvery(LOAD_STORES_REQUEST, loadStores);
 }
 
-export default function* storeSaga() {
-  yield all([fork(watchLoadStore)]);
+export default function* storesSaga() {
+  yield all([fork(watchLoadStores)]);
 }

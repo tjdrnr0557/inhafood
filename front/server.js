@@ -43,9 +43,9 @@ app.prepare().then(() => {
     return app.render(req, res, "/user", { id: req.params.id });
   });
 
-  server.get("/stores/:storeName", (req, res) => {
-    console.log("@@@@@@@@@@@@@", req.params.storeName);
-    return app.render(req, res, "store", { storeName: req.params.storeName });
+  server.get("/stores/:kindName", (req, res) => {
+    console.log("@@@@@@@@@@@@@", req.params.kindName);
+    return app.render(req, res, "/stores", { kindName: req.params.kindName });
   });
 
   server.get("*", (req, res) => {

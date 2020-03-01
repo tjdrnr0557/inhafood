@@ -27,7 +27,7 @@ const TextWrapper = styled.h2`
 
 const KindCard = ({ post }) => {
   const handleClick = useCallback(() => {
-    Router.push("/store");
+    Router.push("/stores");
   }, []);
   return (
     <ImageWrapper onClick={handleClick}>
