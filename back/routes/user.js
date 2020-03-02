@@ -29,10 +29,10 @@ router.post("/", async (req, res, next) => {
       userId: req.body.userId,
       password: hashedPassword
     });
-    console.log(newUser);
+    ////console.log(newUser);
     return res.status(200).json(newUser);
   } catch (e) {
-    console.error(e);
+    //////console.error(e);
     // 에러 처리를 여기서
     return next(e);
   }
@@ -68,7 +68,7 @@ router.get("/:id", async (req, res, next) => {
     jsonUser.Followers = jsonUser.Followers ? jsonUser.Followers.length : 0;
     res.json(jsonUser);
   } catch (e) {
-    console.error(e);
+    //////console.error(e);
     next(e);
   }
 });
@@ -84,7 +84,7 @@ router.post("/login", (req, res, next) => {
   // POST /api/user/login
   passport.authenticate("local", (err, user, info) => {
     if (err) {
-      console.error(err);
+      //////console.error(err);
       return next(err);
     }
     if (info) {
@@ -116,7 +116,7 @@ router.post("/login", (req, res, next) => {
           ],
           attributes: ["id", "nickname", "userId"]
         });
-        console.log(fullUser);
+        //////console.log(fullUser);
         return res.json(fullUser);
       } catch (e) {
         next(e);
@@ -140,7 +140,7 @@ router.get("/:id/followings", isLoggedIn, async (req, res, next) => {
     });
     res.json(followers);
   } catch (e) {
-    console.error(e);
+    ////console.error(e);
     next(e);
   }
 });
@@ -160,7 +160,7 @@ router.get("/:id/followers", isLoggedIn, async (req, res, next) => {
     });
     res.json(followers);
   } catch (e) {
-    console.error(e);
+    ////console.error(e);
     next(e);
   }
 });
@@ -173,7 +173,7 @@ router.delete("/:id/follower", isLoggedIn, async (req, res, next) => {
     await me.removeFollower(req.params.id);
     res.send(req.params.id);
   } catch (e) {
-    console.error(e);
+    ////console.error(e);
     next(e);
   }
 });
@@ -186,7 +186,7 @@ router.post("/:id/follow", isLoggedIn, async (req, res, next) => {
     await me.addFollowing(req.params.id);
     res.send(req.params.id);
   } catch (e) {
-    console.error(e);
+    ////console.error(e);
     next(e);
   }
 });
@@ -199,7 +199,7 @@ router.delete("/:id/follow", isLoggedIn, async (req, res, next) => {
     await me.removeFollowing(req.params.id);
     res.send(req.params.id);
   } catch (e) {
-    console.error(e);
+    ////console.error(e);
     next(e);
   }
 });
@@ -229,7 +229,7 @@ router.get("/:id/posts", async (req, res, next) => {
     });
     res.json(posts);
   } catch (e) {
-    console.error(e);
+    ////console.error(e);
     next(e);
   }
 });
@@ -246,7 +246,7 @@ router.patch("/nickname", isLoggedIn, async (req, res, next) => {
     );
     res.send(req.body.nickname);
   } catch (e) {
-    console.error(e);
+    ////console.error(e);
     next(e);
   }
 });

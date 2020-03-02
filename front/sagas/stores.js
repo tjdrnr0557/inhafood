@@ -8,7 +8,7 @@ import {
 
 function loadStoresAPI(kindName) {
   console.log("@@kindName", kindName);
-  return axios.get(`stores/${kindName}`);
+  return axios.get(`/stores/${encodeURIComponent(kindName)}`);
 }
 
 function* loadStores(action) {

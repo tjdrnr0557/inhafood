@@ -55,7 +55,7 @@ const HeadWrapper = styled.div`
 `;
 
 const Stores = ({ kindName }) => {
-  console.log("@@@storeName", kindName);
+  console.log("@@@ in component", kindName);
   return (
     <>
       <HeadWrapper>

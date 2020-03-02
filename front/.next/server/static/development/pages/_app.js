@@ -2236,13 +2236,12 @@ NodeBird.getInitialProps = async context => {
 
   if (ctx.isServer && cookie) {
     axios__WEBPACK_IMPORTED_MODULE_7___default.a.defaults.headers.Cookie = cookie;
-  }
+  } // if (!state.user.me) {
+  //   ctx.store.dispatch({
+  //     type: LOAD_USER_REQUEST
+  //   });
+  // }
 
-  if (!state.user.me) {
-    ctx.store.dispatch({
-      type: _reducers_user__WEBPACK_IMPORTED_MODULE_13__["LOAD_USER_REQUEST"]
-    });
-  }
 
   if (Component.getInitialProps) {
     pageProps = (await Component.getInitialProps(ctx)) || {};
@@ -2794,6 +2793,7 @@ const LOAD_STORES_FAILURE = "LOAD_STORES_FAILURE";
 
       case LOAD_STORES_SUCCESS:
         {
+          console.log("come her success????");
           action.data.forEach(d => {
             draft.storePosts.push(d);
           });
@@ -3546,7 +3546,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function loadStoresAPI(kindName) {
   console.log("@@kindName", kindName);
-  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(`stores/${kindName}`);
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(`/stores/${encodeURIComponent(kindName)}`);
 }
 
 function* loadStores(action) {

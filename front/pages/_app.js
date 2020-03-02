@@ -105,11 +105,11 @@ NodeBird.getInitialProps = async context => {
   if (ctx.isServer && cookie) {
     axios.defaults.headers.Cookie = cookie;
   }
-  if (!state.user.me) {
-    ctx.store.dispatch({
-      type: LOAD_USER_REQUEST
-    });
-  }
+  // if (!state.user.me) {
+  //   ctx.store.dispatch({
+  //     type: LOAD_USER_REQUEST
+  //   });
+  // }
   if (Component.getInitialProps) {
     pageProps = (await Component.getInitialProps(ctx)) || {};
   }

@@ -13,11 +13,16 @@ module.exports = (sequelize, DataTypes) => {
       kindname: {
         type: DataTypes.STRING(20),
         allowNull: false
+      },
+      img: {
+        type: DataTypes.TEXT,
+        allowNull: false
       }
     },
     {
       charset: "utf8", //  한글+이모티콘
-      collate: "utf8_general_ci"
+      collate: "utf8_general_ci",
+      timestamps: true
     }
   );
   Store.associate = db => {
