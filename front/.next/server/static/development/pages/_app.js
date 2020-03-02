@@ -2793,8 +2793,8 @@ const LOAD_STORES_FAILURE = "LOAD_STORES_FAILURE";
 
       case LOAD_STORES_SUCCESS:
         {
-          console.log("come her success????");
           action.data.forEach(d => {
+            console.log("dddddd", d);
             draft.storePosts.push(d);
           });
           break;
@@ -3545,7 +3545,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function loadStoresAPI(kindName) {
-  console.log("@@kindName", kindName);
   return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(`/stores/${encodeURIComponent(kindName)}`);
 }
 

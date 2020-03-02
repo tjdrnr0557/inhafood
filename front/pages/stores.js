@@ -55,17 +55,19 @@ const HeadWrapper = styled.div`
 `;
 
 const Stores = ({ kindName }) => {
-  console.log("@@@ in component", kindName);
+  const { storePosts } = useSelector(state => state.stores);
+
   return (
     <>
       <HeadWrapper>
-        <h1>이곳은 치킨페이지입니다</h1>
+        <h1>이곳은 {kindName}페이지입니다</h1>
         <p>치킨 / 찜닭 / 닭한마리 / 닭요리</p>
       </HeadWrapper>
       <StoreWrapper>
-        {storesArr.map(c => {
-          return <StoreCard store={c} />;
-        })}
+        {storePosts &&
+          storePosts.map(c => {
+            return <StoreCard store={c} />;
+          })}
       </StoreWrapper>
     </>
   );
@@ -73,7 +75,6 @@ const Stores = ({ kindName }) => {
 
 Stores.getInitialProps = async context => {
   const kindName = context.query.kindName;
-  console.log("@@@@@ store name", kindName);
   context.store.dispatch({
     type: LOAD_STORES_REQUEST,
     data: kindName

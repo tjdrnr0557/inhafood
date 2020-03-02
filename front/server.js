@@ -44,7 +44,6 @@ app.prepare().then(() => {
   });
 
   server.get("/stores/:kindName", (req, res) => {
-    console.log("@@@@@@@@@@@@@", req.params.kindName);
     return app.render(req, res, "/stores", { kindName: req.params.kindName });
   });
 

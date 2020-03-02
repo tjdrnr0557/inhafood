@@ -9,8 +9,7 @@ import { LOAD_MAIN_POSTS_REQUEST } from "../reducers/post";
 const storeKinds = [
   {
     id: 1,
-    name: "치킨/닭",
-    kindId: 1,
+    name: "치킨",
     content: "맛있는 치킨",
     img: "https://image.flaticon.com/icons/svg/2615/2615213.svg"
   },
@@ -29,14 +28,14 @@ const storeKinds = [
     img: "https://image.flaticon.com/icons/svg/454/454586.svg"
   },
   {
-    id: 3,
+    id: 4,
     name: "중국집",
     kindId: 1,
     content: "중국집",
     img: "https://image.flaticon.com/icons/svg/890/890051.svg"
   },
   {
-    id: 3,
+    id: 5,
     name: "양식",
     kindId: 1,
     content: "파",

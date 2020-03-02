@@ -54,8 +54,8 @@ const StoreCard = ({ store }) => {
     <CardWrapper>
       <EachImage alt="example" src={store.img} />
       <EachDescription>
-        <H1wrapper>{store.name}</H1wrapper>
-        <Pwrapper>맛있는 치킨을 제공하는 곳</Pwrapper>
+        <H1wrapper>{store.storename}</H1wrapper>
+        <Pwrapper>{store.content}</Pwrapper>
       </EachDescription>
     </CardWrapper>
   );
