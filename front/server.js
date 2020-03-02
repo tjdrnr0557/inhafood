@@ -48,6 +48,10 @@ app.prepare().then(() => {
     return app.render(req, res, "/stores", { kindName: req.params.kindName });
   });
 
+  // server.get("/store/:id", (req, res) => {
+  //   return app.render(req, res, "store", { id: req.params.id });
+  // });
+
   server.get("*", (req, res) => {
     return handle(req, res);
   });

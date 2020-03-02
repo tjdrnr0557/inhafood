@@ -7,6 +7,7 @@ import {
 } from "../reducers/stores.js";
 
 function loadStoresAPI(kindName) {
+  console.log("@@kindName", kindName);
   return axios.get(`stores/${kindName}`);
 }
 

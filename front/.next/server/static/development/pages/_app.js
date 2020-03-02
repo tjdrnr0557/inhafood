@@ -3545,6 +3545,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function loadStoresAPI(kindName) {
+  console.log("@@kindName", kindName);
   return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(`stores/${kindName}`);
 }
 
