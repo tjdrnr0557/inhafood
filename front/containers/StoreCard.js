@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import styled from "styled-components";
+import Router from "next/router";
 
 const CardWrapper = styled.div`
   width: 100%;
@@ -33,14 +34,12 @@ const EachDescription = styled.div`
 `;
 
 const H1wrapper = styled.div`
-   {
-    font-size: 1.5rem;
-    color: rgba(0, 0, 0, 0.85);
-    @media screen and (max-width: 768px) {
-      width: 100%;
-      height: 100%;
-      padding-top: 3%;
-    }
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.85);
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+    padding-top: 3%;
   }
 `;
 const Pwrapper = styled.div`
@@ -50,8 +49,11 @@ const Pwrapper = styled.div`
   }
 `;
 const StoreCard = ({ store }) => {
+  const handleClick = useCallback(() => {
+    Router.push("/store");
+  }, []);
   return (
-    <CardWrapper>
+    <CardWrapper onClick={handleClick}>
       <EachImage alt="example" src={store.img} />
       <EachDescription>
         <H1wrapper>{store.storename}</H1wrapper>
