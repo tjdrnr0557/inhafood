@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   Store.associate = db => {
     db.Store.hasMany(db.Post); // 테이블에 UserId 컬럼이 생겨요
+    db.Store.hasMany(db.Image);
     //db.Post.hasMany(db.Image);
     //db.Post.belongsToMany(db.User, { through: "Like", as: "Likers" });
   };
