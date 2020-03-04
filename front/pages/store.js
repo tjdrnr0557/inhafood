@@ -1,6 +1,28 @@
 import React from "react";
 import styled from "styled-components";
-import { join } from "redux-saga/effects";
+import PostCardd from "../containers/PostCardd";
+
+const Posts = [
+  {
+    username: "첫번째유저",
+    content:
+      "이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ ? 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ ",
+    rating: 4.3,
+    createdAt: "2020-03-04"
+  },
+  {
+    username: "첫번째유저",
+    content: "dfsdfsdvxcvxcvsdf",
+    rating: 4.3,
+    createdAt: "2020-03-04"
+  },
+  {
+    username: "첫번째유저",
+    content: "dfsdfsdvxcvxcvsdf",
+    rating: 4.3,
+    createdAt: "2020-03-04"
+  }
+];
 
 const Layout = styled.div`
   margin: 1rem;
@@ -21,6 +43,7 @@ const StoreWrapper = styled.div`
   }
 `;
 const PostWrapper = styled.div`
+  padding: 1rem;
   border: 1px solid black;
   @media screen and (max-width: 768px) {
   }
@@ -78,7 +101,12 @@ const Store = () => {
         </GridWrapper>
         <p style={{ textAlign: "right" }}>업데이트 : 2020.03.04</p>
       </StoreWrapper>
-      <PostWrapper></PostWrapper>
+      <PostWrapper>
+        <p style={{ fontSize: "1.5rem" }}>리뷰 (5)</p>
+        {Posts.map(p => {
+          return <PostCardd post={p} />;
+        })}
+      </PostWrapper>
     </Layout>
   );
 };
