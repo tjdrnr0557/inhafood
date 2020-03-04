@@ -16,11 +16,14 @@ const CardWrapper = styled.div`
 `;
 const AvatarWrapper = styled.div`
   text-align: center;
-  padding: 1.5rem 0;
+  padding: 2rem 0;
+
   @media screen and (max-width: 768px) {
-    padding: 0.5rem 0 0.2rem 0;
+    padding: 0.7rem 0 0.2rem 0;
     text-align: left;
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 const NameWrapper = styled.div`
