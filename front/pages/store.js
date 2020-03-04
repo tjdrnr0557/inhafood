@@ -25,11 +25,10 @@ const Posts = [
 ];
 
 const Layout = styled.div`
-  margin: 1rem;
+  padding: 1rem;
 `;
 const HeadImgWrapper = styled.div`
   height: 20rem;
-  border: 1px solid black;
   @media screen and (max-width: 768px) {
     height: 15rem;
   }
@@ -37,14 +36,13 @@ const HeadImgWrapper = styled.div`
 const StoreWrapper = styled.div`
   padding: 1rem;
   min-height: 22rem;
-  border: 1px solid black;
   @media screen and (max-width: 768px) {
     min-height: 20rem;
   }
+  border-bottom: 1px solid #dbdbdb;
 `;
 const PostWrapper = styled.div`
   padding: 1rem;
-  border: 1px solid black;
   @media screen and (max-width: 768px) {
   }
 `;
@@ -68,6 +66,10 @@ const GridWrapper = styled.div`
 `;
 const TdWrapper = styled.div`
   padding: 0.3rem;
+`;
+const ReviewWrapper = styled.div`
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
 `;
 
 const Store = () => {
@@ -102,7 +104,7 @@ const Store = () => {
         <p style={{ textAlign: "right" }}>업데이트 : 2020.03.04</p>
       </StoreWrapper>
       <PostWrapper>
-        <p style={{ fontSize: "1.5rem" }}>리뷰 (5)</p>
+        <ReviewWrapper>리뷰 (5)</ReviewWrapper>
         {Posts.map(p => {
           return <PostCardd post={p} />;
         })}

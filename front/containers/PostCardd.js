@@ -12,29 +12,40 @@ const CardWrapper = styled.div`
   @media screen and (max-width: 768px) {
     flex-direction: column;
   }
+  border-bottom: 1px solid #dbdbdb;
 `;
 const AvatarWrapper = styled.div`
   text-align: center;
-  padding: 2rem 0;
+  padding: 1.5rem 0;
   @media screen and (max-width: 768px) {
-    padding: 0.5rem 0;
+    padding: 0.5rem 0 0.2rem 0;
     text-align: left;
     display: flex;
   }
 `;
 const NameWrapper = styled.div`
   padding-top: 0.5rem;
-  font-size: 0.7rem;
+  font-size: 1rem;
   @media screen and (max-width: 768px) {
     padding-top: 0;
     padding-left: 0.3rem;
   }
 `;
 const CommentWrapper = styled.div`
-  padding: 2rem 1rem;
+  padding: 1.58rem 1rem;
   @media screen and (max-width: 768px) {
-    padding: 0.5rem;
+    padding: 0 0 1rem 0;
   }
+`;
+const RateWrapper = styled.div`
+  font-size: 1.5rem;
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
+`;
+const RateDate = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
 const PostCardd = ({ post }) => {
@@ -42,9 +53,15 @@ const PostCardd = ({ post }) => {
     <CardWrapper>
       <AvatarWrapper>
         <Avatar size="large" icon="user" />
-        <NameWrapper>닉네임은뭐닉네은뭐닉네임은뭐닉네임은뭐</NameWrapper>
+        <NameWrapper>닉네임은뭐닉</NameWrapper>
       </AvatarWrapper>
-      <CommentWrapper>{post.content}</CommentWrapper>
+      <CommentWrapper>
+        <RateDate>
+          <RateWrapper>4.4</RateWrapper>
+          <div style={{ color: "#dbdbdb" }}>2020-03-04</div>
+        </RateDate>
+        <div>{post.content}</div>
+      </CommentWrapper>
     </CardWrapper>
   );
 };
