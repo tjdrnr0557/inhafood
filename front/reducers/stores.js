@@ -14,7 +14,6 @@ export default (state = initialState, action) => {
       }
       case LOAD_STORES_SUCCESS: {
         action.data.forEach(d => {
-          console.log("dddddd", d);
           draft.storePosts.push(d);
         });
         break;

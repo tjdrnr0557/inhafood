@@ -50,7 +50,7 @@ const Pwrapper = styled.div`
 `;
 const StoreCard = ({ store }) => {
   const handleClick = useCallback(() => {
-    Router.push("/store");
+    Router.push("/store/"+store.id);
   }, []);
   return (
     <CardWrapper onClick={handleClick}>

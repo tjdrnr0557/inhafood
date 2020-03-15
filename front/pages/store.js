@@ -114,4 +114,7 @@ const Store = () => {
   );
 };
 
+Store.getInitialProps=async context=> {
+  const storeid=context.query.id
+};
 export default Store;

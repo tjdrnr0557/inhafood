@@ -2794,7 +2794,6 @@ const LOAD_STORES_FAILURE = "LOAD_STORES_FAILURE";
       case LOAD_STORES_SUCCESS:
         {
           action.data.forEach(d => {
-            console.log("dddddd", d);
             draft.storePosts.push(d);
           });
           break;
