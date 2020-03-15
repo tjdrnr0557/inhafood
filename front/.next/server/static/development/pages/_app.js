@@ -2765,7 +2765,7 @@ const LOAD_POST_FAILURE = "LOAD_POST_FAILURE";
 /*!****************************!*\
   !*** ./reducers/stores.js ***!
   \****************************/
-/*! exports provided: initialState, LOAD_STORES_REQUEST, LOAD_STORES_SUCCESS, LOAD_STORES_FAILURE, default */
+/*! exports provided: initialState, LOAD_STORES_REQUEST, LOAD_STORES_SUCCESS, LOAD_STORES_FAILURE, LOAD_STORE_REQUEST, LOAD_STORE_SUCCESS, LOAD_STORE_FAILURE, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2774,15 +2774,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_STORES_REQUEST", function() { return LOAD_STORES_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_STORES_SUCCESS", function() { return LOAD_STORES_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_STORES_FAILURE", function() { return LOAD_STORES_FAILURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_STORE_REQUEST", function() { return LOAD_STORE_REQUEST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_STORE_SUCCESS", function() { return LOAD_STORE_SUCCESS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_STORE_FAILURE", function() { return LOAD_STORE_FAILURE; });
 /* harmony import */ var immer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! immer */ "immer");
 /* harmony import */ var immer__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(immer__WEBPACK_IMPORTED_MODULE_0__);
 
 const initialState = {
-  storePosts: []
+  storePosts: [],
+  store: {}
 };
 const LOAD_STORES_REQUEST = "LOAD_STORES_REQUEST";
 const LOAD_STORES_SUCCESS = "LOAD_STORES_SUCCESS";
 const LOAD_STORES_FAILURE = "LOAD_STORES_FAILURE";
+const LOAD_STORE_REQUEST = "LOAD_STORE_REQUEST";
+const LOAD_STORE_SUCCESS = "LOAD_STORE_SUCCESS";
+const LOAD_STORE_FAILURE = "LOAD_STORE_FAILURE";
 /* harmony default export */ __webpack_exports__["default"] = ((state = initialState, action) => {
   return immer__WEBPACK_IMPORTED_MODULE_0___default()(state, draft => {
     switch (action.type) {
@@ -2800,6 +2807,23 @@ const LOAD_STORES_FAILURE = "LOAD_STORES_FAILURE";
         }
 
       case LOAD_STORES_FAILURE:
+        {
+          break;
+        }
+      //
+
+      case LOAD_STORE_REQUEST:
+        {
+          break;
+        }
+
+      case LOAD_STORE_SUCCESS:
+        {
+          draft.store = action.data;
+          break;
+        }
+
+      case LOAD_STORE_FAILURE:
         {
           break;
         }
@@ -3565,10 +3589,38 @@ function* loadStores(action) {
 
 function* watchLoadStores() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_stores_js__WEBPACK_IMPORTED_MODULE_2__["LOAD_STORES_REQUEST"], loadStores);
+} ///
+
+
+function loadStoreAPI(id) {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(`/store/${id}`);
+}
+
+function* loadStore(action) {
+  console.log("come her? loadStore", action.data);
+
+  try {
+    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadStoreAPI, action.data);
+    console.log("result result????", result);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_stores_js__WEBPACK_IMPORTED_MODULE_2__["LOAD_STORE_SUCCESS"],
+      data: result.data
+    });
+  } catch (e) {
+    console.error(e);
+    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
+      type: _reducers_stores_js__WEBPACK_IMPORTED_MODULE_2__["LOAD_STORE_FAILURE"],
+      error: e
+    });
+  }
+}
+
+function* watchLoadStore() {
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_stores_js__WEBPACK_IMPORTED_MODULE_2__["LOAD_STORE_REQUEST"], loadStore);
 }
 
 function* storesSaga() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLoadStores)]);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLoadStores), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLoadStore)]);
 }
 
 /***/ }),

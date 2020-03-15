@@ -10,6 +10,7 @@ const passportConfig = require("./passport");
 const db = require("./models");
 const userAPIRouter = require("./routes/user");
 const storesAPIRouter = require("./routes/stores");
+const storeAPIRouter = require("./routes/store");
 const postsAPIRouter = require("./routes/posts");
 
 dotenv.config();
@@ -47,6 +48,7 @@ app.use(passport.session());
 app.use("/api/user", userAPIRouter);
 app.use("/api/posts", postsAPIRouter);
 app.use("/api/stores", storesAPIRouter);
+app.use("/api/store", storeAPIRouter);
 
 app.listen(3065, () => {
   console.log("server is running on http://localhost:3065");

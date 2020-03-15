@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import PostCardd from "../containers/PostCardd";
+import { useDispatch, useSelector } from "react-redux";
+import { LOAD_STORE_REQUEST } from "../reducers/stores";
 
 const Posts = [
   {
@@ -74,12 +76,13 @@ const ReviewWrapper = styled.div`
 `;
 
 const Store = () => {
+  const { store } = useSelector(state => state.stores);
   return (
     <Layout>
       <HeadImgWrapper>ab ㅂc</HeadImgWrapper>
       <StoreWrapper>
         <>
-          <H1wrapper>필바든치킨</H1wrapper>
+          <H1wrapper>{store[0].storename}</H1wrapper>
           <Pwrapper>치킨이 맛있는 순살치킨 양념</Pwrapper>
         </>
         <GridWrapper>
@@ -114,7 +117,12 @@ const Store = () => {
   );
 };
 
-Store.getInitialProps=async context=> {
-  const storeid=context.query.id
+Store.getInitialProps = async context => {
+  const id = context.query.id;
+  context.store.dispatch({
+    type: LOAD_STORE_REQUEST,
+    data: id
+  });
+  return { id };
 };
 export default Store;
