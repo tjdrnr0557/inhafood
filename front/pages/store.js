@@ -27,7 +27,7 @@ const Posts = [
   }
 ];
 
-const Layout = styled.div`
+const AppLayout = styled.div`
   padding: 1rem;
 `;
 const HeadWrapper = styled.div`
@@ -83,15 +83,15 @@ const ImgWrapper = styled.image`
 `;
 
 const Store = ({ id }) => {
-  const { store } = useSelector(state => state.stores);
+  //const { store } = useSelector(state => state.stores);
   return (
-    <Layout>
+    <AppLayout>
       <HeadWrapper>
-        <ImgWrapper src={store[0].img} />
+        <ImgWrapper />
       </HeadWrapper>
       <StoreWrapper>
         <>
-          <H1wrapper>{store[0].storename}</H1wrapper>
+          <H1wrapper></H1wrapper>
           <Pwrapper>치킨이 맛있는 순살치킨 양념</Pwrapper>
         </>
         <GridWrapper>
@@ -122,7 +122,7 @@ const Store = ({ id }) => {
           return <PostCardd post={p} />;
         })}
       </PostWrapper>
-    </Layout>
+    </AppLayout>
   );
 };
 

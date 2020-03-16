@@ -48,7 +48,7 @@ app.prepare().then(() => {
   });
 
   server.get("/store/:id", (req, res) => {
-    return app.render(req, res, "store", { id: req.params.id });
+    return app.render(req, res, "/store", { id: req.params.id });
   });
 
   server.get("*", (req, res) => {
