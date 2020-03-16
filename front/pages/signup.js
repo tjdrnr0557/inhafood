@@ -4,12 +4,7 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import Router from "next/router";
 import { SIGN_UP_REQUEST } from "../reducers/user";
-
-const TextInput = ({ value }) => <div>{value}</div>;
-
-TextInput.propTypes = {
-  value: PropTypes.string
-};
+import styled from "styled-components";
 
 export const useInput = (initValue = null) => {
   const [value, setter] = useState(initValue);
@@ -75,7 +70,6 @@ const Signup = () => {
   return (
     <>
       <Form onSubmit={onSubmit} style={{ padding: 10 }}>
-        <TextInput value="135135" />
         <div>
           <label htmlFor="user-id">아이디</label>
           <br />
@@ -118,7 +112,7 @@ const Signup = () => {
         </div>
         <div>
           <Checkbox name="user-term" checked={term} onChange={onChangeTerm}>
-            약관에동의 할 것을 동의합니다.
+            약관에 동의 합니다.
           </Checkbox>
           {termError && (
             <div style={{ color: "red" }}>약관에 동의하셔야 합니다.</div>

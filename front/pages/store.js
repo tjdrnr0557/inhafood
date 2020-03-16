@@ -32,6 +32,7 @@ const AppLayout = styled.div`
 `;
 const HeadWrapper = styled.div`
   height: 20rem;
+  overflow: hidden;
   @media screen and (max-width: 768px) {
     height: 15rem;
   }
@@ -74,7 +75,7 @@ const ReviewWrapper = styled.div`
   font-size: 1.5rem;
   padding-bottom: 1rem;
 `;
-const ImgWrapper = styled.image`
+const ImgWrapper = styled.img`
   height: 20rem;
   overflow: hidden;
   @media screen and (max-width: 768px) {
@@ -83,15 +84,15 @@ const ImgWrapper = styled.image`
 `;
 
 const Store = ({ id }) => {
-  //const { store } = useSelector(state => state.stores);
+  const { store } = useSelector(state => state.stores);
   return (
     <AppLayout>
       <HeadWrapper>
-        <ImgWrapper />
+        <ImgWrapper src={store[0].img} />
       </HeadWrapper>
       <StoreWrapper>
         <>
-          <H1wrapper></H1wrapper>
+          <H1wrapper>{store && store[0].storename}</H1wrapper>
           <Pwrapper>치킨이 맛있는 순살치킨 양념</Pwrapper>
         </>
         <GridWrapper>

@@ -2286,6 +2286,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../reducers/user */ "./reducers/user.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_6__);
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -2294,13 +2296,6 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-const TextInput = ({
-  value
-}) => __jsx("div", null, value);
-
-TextInput.propTypes = {
-  value: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.string
-};
 const useInput = (initValue = null) => {
   const {
     0: value,
@@ -2376,9 +2371,7 @@ const Signup = () => {
     style: {
       padding: 10
     }
-  }, __jsx(TextInput, {
-    value: "135135"
-  }), __jsx("div", null, __jsx("label", {
+  }, __jsx("div", null, __jsx("label", {
     htmlFor: "user-id"
   }, "\uC544\uC774\uB514"), __jsx("br", null), __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Input"], {
     name: "user-id",
@@ -2416,7 +2409,7 @@ const Signup = () => {
     name: "user-term",
     checked: term,
     onChange: onChangeTerm
-  }, "\uC57D\uAD00\uC5D0\uB3D9\uC758 \uD560 \uAC83\uC744 \uB3D9\uC758\uD569\uB2C8\uB2E4."), termError && __jsx("div", {
+  }, "\uC57D\uAD00\uC5D0 \uB3D9\uC758 \uD569\uB2C8\uB2E4."), termError && __jsx("div", {
     style: {
       color: "red"
     }
@@ -4174,6 +4167,17 @@ module.exports = require("redux-saga");
 /***/ (function(module, exports) {
 
 module.exports = require("redux-saga/effects");
+
+/***/ }),
+
+/***/ "styled-components":
+/*!************************************!*\
+  !*** external "styled-components" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("styled-components");
 
 /***/ }),
 
