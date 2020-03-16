@@ -3597,11 +3597,8 @@ function loadStoreAPI(id) {
 }
 
 function* loadStore(action) {
-  console.log("come her? loadStore", action.data);
-
   try {
     const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadStoreAPI, action.data);
-    console.log("result result????", result);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
       type: _reducers_stores_js__WEBPACK_IMPORTED_MODULE_2__["LOAD_STORE_SUCCESS"],
       data: result.data

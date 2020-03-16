@@ -9,7 +9,7 @@ router.get("/:id", async (req, res, next) => {
     const store = await db.Store.findAll({
       where: { id: req.params.id }
     });
-    console.log("@@@@@@@@@@@ in server stores", store);
+    //console.log("@@@@@@@@@@@ in server stores", store);
     res.json(store);
   } catch (e) {
     console.error(e);

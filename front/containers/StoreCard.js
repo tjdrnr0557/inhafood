@@ -50,8 +50,8 @@ const Pwrapper = styled.div`
 `;
 const StoreCard = ({ store }) => {
   const handleClick = useCallback(() => {
-    Router.push("/store/"+store.id);
-  }, []);
+    Router.push("/store/" + store.id);
+  }, [store, store.id]);
   return (
     <CardWrapper onClick={handleClick}>
       <EachImage alt="example" src={store.img} />
