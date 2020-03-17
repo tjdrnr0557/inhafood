@@ -14,6 +14,7 @@ import {
   SIGN_UP_REQUEST,
   SIGN_UP_SUCCESS
 } from "../reducers/user";
+import Router from "next/router";
 
 function logInAPI(loginData) {
   // 서버에 요청을 보내는 부분
@@ -30,6 +31,7 @@ function* logIn(action) {
       type: LOG_IN_SUCCESS,
       data: result.data
     });
+    Router.push("/"); //success를 take해서 router push 하는게 나을듯
   } catch (e) {
     // loginAPI 실패
     console.error(e);
@@ -55,6 +57,7 @@ function* signUp(action) {
       // put은 dispatch 동일
       type: SIGN_UP_SUCCESS
     });
+    Router.push("/");
   } catch (e) {
     // loginAPI 실패
     console.error(e);

@@ -145,15 +145,17 @@ const AppLayout = ({
     key: "home"
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/"
-  }, __jsx("a", null, "\uD648"))), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"].Item, {
+  }, __jsx("a", null, "\uD648"))), !me && __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"].Item, {
     key: "login"
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/login"
-  }, __jsx("a", null, "\uB85C\uADF8\uC778"))), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"].Item, {
+  }, __jsx("a", null, "\uB85C\uADF8\uC778"))), !me && __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"].Item, {
     key: "signup"
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/signup"
-  }, __jsx("a", null, "\uD68C\uC6D0\uAC00\uC785"))), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"].Item, {
+  }, __jsx("a", null, "\uD68C\uC6D0\uAC00\uC785"))), me && __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"].Item, {
+    key: "logout"
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Button"], null, "\uB85C\uADF8\uC544\uC6C3")), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"].Item, {
     key: "mail"
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Input"].Search, {
     enterButton: true,
@@ -3513,6 +3515,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "axios");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../reducers/user */ "./reducers/user.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -3532,6 +3537,7 @@ function* logIn(action) {
       type: _reducers_user__WEBPACK_IMPORTED_MODULE_2__["LOG_IN_SUCCESS"],
       data: result.data
     });
+    next_router__WEBPACK_IMPORTED_MODULE_3___default.a.push("/"); //success를 take해서 router push 하는게 나을듯
   } catch (e) {
     // loginAPI 실패
     console.error(e);
@@ -3557,6 +3563,7 @@ function* signUp(action) {
       // put은 dispatch 동일
       type: _reducers_user__WEBPACK_IMPORTED_MODULE_2__["SIGN_UP_SUCCESS"]
     });
+    next_router__WEBPACK_IMPORTED_MODULE_3___default.a.push("/");
   } catch (e) {
     // loginAPI 실패
     console.error(e);

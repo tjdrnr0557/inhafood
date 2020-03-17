@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
-import { Col, Input, Menu, Row } from "antd";
+import { Col, Input, Menu, Row, Button } from "antd";
 import { useSelector } from "react-redux";
 import Router from "next/router";
 import LoginForm from "../containers/LoginForm";
@@ -25,16 +25,25 @@ const AppLayout = ({ children }) => {
             <a>홈</a>
           </Link>
         </Menu.Item>
-        <Menu.Item key="login">
-          <Link href="/login">
-            <a>로그인</a>
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="signup">
-          <Link href="/signup">
-            <a>회원가입</a>
-          </Link>
-        </Menu.Item>
+        {!me && (
+          <Menu.Item key="login">
+            <Link href="/login">
+              <a>로그인</a>
+            </Link>
+          </Menu.Item>
+        )}
+        {!me && (
+          <Menu.Item key="signup">
+            <Link href="/signup">
+              <a>회원가입</a>
+            </Link>
+          </Menu.Item>
+        )}
+        {me && (
+          <Menu.Item key="logout">
+            <Button>로그아웃</Button>
+          </Menu.Item>
+        )}
         <Menu.Item key="mail">
           <Input.Search
             enterButton

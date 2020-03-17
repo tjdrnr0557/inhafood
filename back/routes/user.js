@@ -41,40 +41,40 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
-  // 남의 정보 가져오는 것 ex) /api/user/123
-  try {
-    const user = await db.User.findOne({
-      where: { id: parseInt(req.params.id, 10) },
-      include: [
-        {
-          model: db.Post,
-          as: "Posts",
-          attributes: ["id"]
-        },
-        {
-          model: db.User,
-          as: "Followings",
-          attributes: ["id"]
-        },
-        {
-          model: db.User,
-          as: "Followers",
-          attributes: ["id"]
-        }
-      ],
-      attributes: ["id", "nickname"]
-    });
-    const jsonUser = user.toJSON();
-    jsonUser.Posts = jsonUser.Posts ? jsonUser.Posts.length : 0;
-    jsonUser.Followings = jsonUser.Followings ? jsonUser.Followings.length : 0;
-    jsonUser.Followers = jsonUser.Followers ? jsonUser.Followers.length : 0;
-    res.json(jsonUser);
-  } catch (e) {
-    //////console.error(e);
-    next(e);
-  }
-});
+// router.get("/:id", async (req, res, next) => {
+//   // 남의 정보 가져오는 것 ex) /api/user/123
+//   try {
+//     const user = await db.User.findOne({
+//       where: { id: parseInt(req.params.id, 10) },
+//       include: [
+//         {
+//           model: db.Post,
+//           as: "Posts",
+//           attributes: ["id"]
+//         },
+//         {
+//           model: db.User,
+//           as: "Followings",
+//           attributes: ["id"]
+//         },
+//         {
+//           model: db.User,
+//           as: "Followers",
+//           attributes: ["id"]
+//         }
+//       ],
+//       attributes: ["id", "nickname"]
+//     });
+//     const jsonUser = user.toJSON();
+//     jsonUser.Posts = jsonUser.Posts ? jsonUser.Posts.length : 0;
+//     jsonUser.Followings = jsonUser.Followings ? jsonUser.Followings.length : 0;
+//     jsonUser.Followers = jsonUser.Followers ? jsonUser.Followers.length : 0;
+//     res.json(jsonUser);
+//   } catch (e) {
+//     //////console.error(e);
+//     next(e);
+//   }
+// });
 
 router.post("/logout", (req, res) => {
   // /api/user/logout
@@ -100,13 +100,13 @@ router.post("/login", (req, res, next) => {
         }
         const fullUser = await db.User.findOne({
           where: { id: user.id },
-          include: [
-            {
-              model: db.Post,
-              as: "Posts",
-              attributes: ["id"]
-            }
-          ],
+          // include: [
+          //   // {
+          //   //   model: db.Post,
+          //   //   as: "Posts",
+          //   //   attributes: ["id"]
+          //   // }
+          // ],
           attributes: ["id", "nickname", "userId"]
         });
         console.log("what is fullUser", fullUser);
