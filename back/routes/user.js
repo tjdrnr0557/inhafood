@@ -29,10 +29,13 @@ router.post("/", async (req, res, next) => {
       userId: req.body.userId,
       password: hashedPassword
     });
-    ////console.log(newUser);
+    // console.log(
+    //   "newUSER@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+    //   newUser
+    // );
     return res.status(200).json(newUser);
   } catch (e) {
-    //////console.error(e);
+    console.error(e);
     // 에러 처리를 여기서
     return next(e);
   }
@@ -84,7 +87,7 @@ router.post("/login", (req, res, next) => {
   // POST /api/user/login
   passport.authenticate("local", (err, user, info) => {
     if (err) {
-      //////console.error(err);
+      console.error(err);
       return next(err);
     }
     if (info) {
@@ -102,21 +105,11 @@ router.post("/login", (req, res, next) => {
               model: db.Post,
               as: "Posts",
               attributes: ["id"]
-            },
-            {
-              model: db.User,
-              as: "Followings",
-              attributes: ["id"]
-            },
-            {
-              model: db.User,
-              as: "Followers",
-              attributes: ["id"]
             }
           ],
           attributes: ["id", "nickname", "userId"]
         });
-        //////console.log(fullUser);
+        console.log("what is fullUser", fullUser);
         return res.json(fullUser);
       } catch (e) {
         next(e);

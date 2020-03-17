@@ -50,7 +50,6 @@ function signUpAPI(signUpData) {
 
 function* signUp(action) {
   try {
-    // yield call(signUpAPI);
     yield call(signUpAPI, action.data);
     yield put({
       // put은 dispatch 동일

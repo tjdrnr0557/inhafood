@@ -3548,7 +3548,6 @@ function signUpAPI(signUpData) {
 
 function* signUp(action) {
   try {
-    // yield call(signUpAPI);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(signUpAPI, action.data);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
       // put은 dispatch 동일
