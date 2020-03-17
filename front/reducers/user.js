@@ -119,29 +119,6 @@ export default (state = initialState, action) => {
       case LOAD_USER_FAILURE: {
         break;
       }
-      case FOLLOW_USER_REQUEST: {
-        break;
-      }
-      case FOLLOW_USER_SUCCESS: {
-        draft.me.Followings.unshift({ id: action.data });
-        break;
-      }
-      case FOLLOW_USER_FAILURE: {
-        break;
-      }
-      case UNFOLLOW_USER_REQUEST: {
-        break;
-      }
-      case UNFOLLOW_USER_SUCCESS: {
-        const index = draft.me.Followings.findIndex(v => v.id === action.data);
-        draft.me.Followings.splice(index, 1);
-        const index2 = draft.followingList.findIndex(v => v.id === action.data);
-        draft.followingList.splice(index2, 1);
-        break;
-      }
-      case UNFOLLOW_USER_FAILURE: {
-        break;
-      }
       case ADD_POST_TO_ME: {
         draft.me.Posts.unshift({ id: action.data });
         break;
@@ -149,64 +126,6 @@ export default (state = initialState, action) => {
       case REMOVE_POST_OF_ME: {
         const index = draft.me.Posts.findIndex(v => v.id === action.data);
         draft.me.Posts.splice(index, 1);
-        break;
-      }
-      case LOAD_FOLLOWERS_REQUEST: {
-        draft.followerList = !action.offset ? [] : draft.followerList;
-        draft.hasMoreFollower = action.offset ? draft.hasMoreFollower : true; // 처음 데이터를 가져올 때는 더보기 버튼을 보여주는 걸로
-        break;
-      }
-      case LOAD_FOLLOWERS_SUCCESS: {
-        action.data.forEach(d => {
-          draft.followerList.push(d);
-        });
-        draft.hasMoreFollower = action.data.length === 3;
-        break;
-      }
-      case LOAD_FOLLOWERS_FAILURE: {
-        break;
-      }
-      case LOAD_FOLLOWINGS_REQUEST: {
-        draft.followingList = !action.offset ? [] : draft.followingList;
-        draft.hasMoreFollowing = action.offset ? draft.hasMoreFollowing : true; // 처음 데이터를 가져올 때는 더보기 버튼을 보여주는 걸로
-        break;
-      }
-      case LOAD_FOLLOWINGS_SUCCESS: {
-        action.data.forEach(d => {
-          draft.followingList.push(d);
-        });
-        draft.hasMoreFollowing = action.data.length === 3;
-        break;
-      }
-      case LOAD_FOLLOWINGS_FAILURE: {
-        break;
-      }
-      case REMOVE_FOLLOWER_REQUEST: {
-        break;
-      }
-      case REMOVE_FOLLOWER_SUCCESS: {
-        const index = draft.me.Followers.findIndex(v => v.id === action.data);
-        draft.me.Followers.splice(index, 1);
-        const index2 = draft.followerList.findIndex(v => v.id === action.data);
-        draft.followerList.splice(index2, 1);
-        break;
-      }
-      case REMOVE_FOLLOWER_FAILURE: {
-        break;
-      }
-      case EDIT_NICKNAME_REQUEST: {
-        draft.isEditingNickname = true;
-        draft.editNicknameErrorReason = "";
-        break;
-      }
-      case EDIT_NICKNAME_SUCCESS: {
-        draft.isEditingNickname = false;
-        draft.me.nickname = action.data;
-        break;
-      }
-      case EDIT_NICKNAME_FAILURE: {
-        draft.isEditingNickname = false;
-        draft.editNicknameErrorReason = action.error;
         break;
       }
       default: {
