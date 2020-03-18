@@ -116,7 +116,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _containers_LoginForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../containers/LoginForm */ "./containers/LoginForm.js");
 /* harmony import */ var _containers_UserProfile__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../containers/UserProfile */ "./containers/UserProfile.js");
+/* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../reducers/user */ "./reducers/user.js");
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -132,6 +134,12 @@ const AppLayout = ({
   const {
     me
   } = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["useSelector"])(state => state.user);
+  const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["useDispatch"])();
+  const logout = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(() => {
+    dispatch({
+      type: _reducers_user__WEBPACK_IMPORTED_MODULE_8__["LOG_OUT_REQUEST"]
+    });
+  }, []);
 
   const onSearch = value => {// Router.push(
     //   { pathname: "/hashtag", query: { tag: value } },
@@ -155,7 +163,9 @@ const AppLayout = ({
     href: "/signup"
   }, __jsx("a", null, "\uD68C\uC6D0\uAC00\uC785"))), me && __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"].Item, {
     key: "logout"
-  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Button"], null, "\uB85C\uADF8\uC544\uC6C3")), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"].Item, {
+  }, __jsx("div", {
+    onClick: logout
+  }, "\uB85C\uADF8\uC544\uC6C3")), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"].Item, {
     key: "mail"
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Input"].Search, {
     enterButton: true,

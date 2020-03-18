@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 import { Col, Input, Menu, Row, Button } from "antd";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Router from "next/router";
 import LoginForm from "../containers/LoginForm";
 import UserProfile from "../containers/UserProfile";
+import { LOG_OUT_REQUEST } from "../reducers/user";
 
 const AppLayout = ({ children }) => {
   const { me } = useSelector(state => state.user);
+  const dispatch = useDispatch();
+  const logout = useCallback(() => {
+    dispatch({
+      type: LOG_OUT_REQUEST
+    });
+  }, []);
 
   const onSearch = value => {
     // Router.push(
@@ -41,7 +48,7 @@ const AppLayout = ({ children }) => {
         )}
         {me && (
           <Menu.Item key="logout">
-            <Button>로그아웃</Button>
+            <div onClick={logout}>로그아웃</div>
           </Menu.Item>
         )}
         <Menu.Item key="mail">
