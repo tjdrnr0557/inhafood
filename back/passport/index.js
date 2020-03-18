@@ -17,16 +17,6 @@ module.exports = () => {
             model: db.Post,
             as: "Posts",
             attributes: ["id"]
-          },
-          {
-            model: db.User,
-            as: "Followings",
-            attributes: ["id"]
-          },
-          {
-            model: db.User,
-            as: "Followers",
-            attributes: ["id"]
           }
         ]
       });

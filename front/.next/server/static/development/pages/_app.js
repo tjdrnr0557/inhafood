@@ -2242,12 +2242,13 @@ NodeBird.getInitialProps = async context => {
 
   if (ctx.isServer && cookie) {
     axios__WEBPACK_IMPORTED_MODULE_7___default.a.defaults.headers.Cookie = cookie;
-  } // if (!state.user.me) {
-  //   ctx.store.dispatch({
-  //     type: LOAD_USER_REQUEST
-  //   });
-  // }
+  }
 
+  if (!state.user.me) {
+    ctx.store.dispatch({
+      type: _reducers_user__WEBPACK_IMPORTED_MODULE_13__["LOAD_USER_REQUEST"]
+    });
+  }
 
   if (Component.getInitialProps) {
     pageProps = (await Component.getInitialProps(ctx)) || {};
