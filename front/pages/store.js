@@ -34,12 +34,20 @@ const HeadWrapper = styled.div`
   height: 20rem;
   overflow: hidden;
   background-image: url(${props => props.src});
+  background-color: rgb(0, 0, 0);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 0;
   @media screen and (max-width: 768px) {
     height: 15rem;
   }
+`;
+const InfoWrapper = styled.div`
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.9) 95%
+  );
 `;
 const StoreWrapper = styled.div`
   padding: 1rem;
@@ -55,9 +63,15 @@ const PostWrapper = styled.div`
   }
 `;
 const H1wrapper = styled.div`
-  padding-top: 1rem;
   font-size: 2.5rem;
-  color: rgba(0, 0, 0, 0.85);
+  text-align: center;
+  color: white;
+  height: 20rem;
+  padding-top: 13rem;
+  @media screen and (max-width: 768px) {
+    padding-top: 10rem;
+    font-size: 2rem;
+  }
 `;
 const Pwrapper = styled.div`
   font-size: 1rem;
@@ -79,26 +93,17 @@ const ReviewWrapper = styled.div`
   font-size: 1.5rem;
   padding-bottom: 1rem;
 `;
-const ImgWrapper = styled.img`
-  height: 20rem;
-  overflow: hidden;
-  @media screen and (max-width: 768px) {
-    height: 15rem;
-  }
-`;
 
 const Store = ({ id }) => {
   const { store } = useSelector(state => state.stores);
   return (
     <AppLayout>
       <HeadWrapper src={store[0].img}>
-        <ImgWrapper />
+        <InfoWrapper>
+          <H1wrapper>{store && store[0].storename}</H1wrapper>
+        </InfoWrapper>
       </HeadWrapper>
       <StoreWrapper>
-        <>
-          <H1wrapper>{store && store[0].storename}</H1wrapper>
-          <Pwrapper>치킨이 맛있는 순살치킨 양념</Pwrapper>
-        </>
         <GridWrapper>
           <TdWrapper>주소</TdWrapper>
           <TdWrapper>2</TdWrapper>
