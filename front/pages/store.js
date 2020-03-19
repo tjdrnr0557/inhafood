@@ -33,6 +33,10 @@ const AppLayout = styled.div`
 const HeadWrapper = styled.div`
   height: 20rem;
   overflow: hidden;
+  background-image: url(${props => props.src});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
   @media screen and (max-width: 768px) {
     height: 15rem;
   }
@@ -87,8 +91,8 @@ const Store = ({ id }) => {
   const { store } = useSelector(state => state.stores);
   return (
     <AppLayout>
-      <HeadWrapper>
-        <ImgWrapper src={store[0].img} />
+      <HeadWrapper src={store[0].img}>
+        <ImgWrapper />
       </HeadWrapper>
       <StoreWrapper>
         <>

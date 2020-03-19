@@ -101,11 +101,11 @@ router.post("/login", (req, res, next) => {
         const fullUser = await db.User.findOne({
           where: { id: user.id },
           // include: [
-          //   // {
-          //   //   model: db.Post,
-          //   //   as: "Posts",
-          //   //   attributes: ["id"]
-          //   // }
+          //   {
+          //     model: db.Post,
+          //     as: "Posts",
+          //     attributes: ["id"]
+          //   }
           // ],
           attributes: ["id", "nickname", "userId"]
         });
