@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styled from "styled-components";
 import PostCardd from "../containers/PostCardd";
 import { useDispatch, useSelector } from "react-redux";
 import { LOAD_STORE_REQUEST } from "../reducers/stores";
+import { Rate, Button } from "antd";
+import Router from "next/router";
 
 const Posts = [
   {
@@ -31,7 +33,7 @@ const AppLayout = styled.div`
   padding: 1rem;
 `;
 const HeadWrapper = styled.div`
-  height: 20rem;
+  height: 30rem;
   overflow: hidden;
   background-image: url(${props => props.src});
   background-color: rgb(0, 0, 0);
@@ -39,16 +41,10 @@ const HeadWrapper = styled.div`
   background-repeat: no-repeat;
   background-position: 50% 0;
   @media screen and (max-width: 768px) {
-    height: 15rem;
+    height: 20rem;
   }
 `;
-const InfoWrapper = styled.div`
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.1),
-    rgba(0, 0, 0, 0.9) 95%
-  );
-`;
+
 const StoreWrapper = styled.div`
   padding: 1rem;
   min-height: 22rem;
@@ -62,24 +58,26 @@ const PostWrapper = styled.div`
   @media screen and (max-width: 768px) {
   }
 `;
-const H1wrapper = styled.div`
-  font-size: 2.5rem;
+const ImgWrapper = styled.div`
   text-align: center;
-  color: white;
-  height: 20rem;
-  padding-top: 13rem;
+  height: 30rem;
+  padding-top: 16rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.9) 95%
+  );
   @media screen and (max-width: 768px) {
     padding-top: 10rem;
-    font-size: 2rem;
+    height: 20rem;
   }
 `;
-const Pwrapper = styled.div`
-  font-size: 1rem;
-  color: grey;
+const NameWrapper = styled.div`
+  font-size: 2.5rem;
+  color: white;
   @media screen and (max-width: 768px) {
+    font-size: 2rem;
   }
-  border-bottom: 1px solid #dbdbdb;
-  padding-bottom: 1rem;
 `;
 const GridWrapper = styled.div`
   display: grid;
@@ -93,46 +91,66 @@ const ReviewWrapper = styled.div`
   font-size: 1.5rem;
   padding-bottom: 1rem;
 `;
+const PWrapper = styled.div`
+  font-size: 1rem;
+  color: grey;
+`;
 
 const Store = ({ id }) => {
   const { store } = useSelector(state => state.stores);
+
+  const handleClick = useCallback(() => {
+    Router.push("/post");
+  }, []);
+
   return (
-    <AppLayout>
+    <>
       <HeadWrapper src={store[0].img}>
-        <InfoWrapper>
-          <H1wrapper>{store && store[0].storename}</H1wrapper>
-        </InfoWrapper>
+        <ImgWrapper>
+          <NameWrapper>{store && store[0].storename}</NameWrapper>
+          <Rate allowHalf value={3.5} />
+          <PWrapper>평점 3.5</PWrapper>
+        </ImgWrapper>
       </HeadWrapper>
-      <StoreWrapper>
-        <GridWrapper>
-          <TdWrapper>주소</TdWrapper>
-          <TdWrapper>2</TdWrapper>
-          <TdWrapper>전화번호</TdWrapper>
-          <TdWrapper>4</TdWrapper>
-          <TdWrapper>영업시간</TdWrapper>
-          <TdWrapper>6</TdWrapper>
-          <TdWrapper>메뉴</TdWrapper>
-          <TdWrapper>
-            치킨이 맛있는 순살치킨 양념치킨이 맛있는 순살치킨 양념치킨이 맛있는
-            순살치킨 양념치킨이 맛있는 순살치킨 양념치킨이 맛있는 순살치킨
-            양념치킨이 맛있는 순살치킨 양념치킨이 맛있는 순살치킨 양념치킨이
-            맛있는 순살치킨 양념치킨이 맛있는 순살치킨 양념치킨이 맛있는
-            순살치킨 양념치킨이 맛있는 순살치킨 양념치킨이 맛있는 순살치킨
-            양념치킨이 맛있는 순살치킨 양념치킨이 맛있는 순살치킨 양념치킨이
-            맛있는 순살치킨 양념치킨이 맛있는 순살치킨 양념
-          </TdWrapper>
-          <TdWrapper>dd</TdWrapper>
-          <TdWrapper>dd</TdWrapper>
-        </GridWrapper>
-        <p style={{ textAlign: "right" }}>업데이트 : 2020.03.04</p>
-      </StoreWrapper>
-      <PostWrapper>
-        <ReviewWrapper>리뷰 (5)</ReviewWrapper>
-        {Posts.map(p => {
-          return <PostCardd post={p} />;
-        })}
-      </PostWrapper>
-    </AppLayout>
+      <AppLayout>
+        <StoreWrapper>
+          <GridWrapper>
+            <TdWrapper>주소</TdWrapper>
+            <TdWrapper>
+              <Rate />
+            </TdWrapper>
+            <TdWrapper>전화번호</TdWrapper>
+            <TdWrapper>4</TdWrapper>
+            <TdWrapper>영업시간</TdWrapper>
+            <TdWrapper>6</TdWrapper>
+            <TdWrapper>메뉴</TdWrapper>
+            <TdWrapper>
+              치킨이 맛있는 순살치킨 양념치킨이 맛있는 순살치킨 양념치킨이
+              맛있는 순살치킨 양념치킨이 맛있는 순살치킨 양념치킨이 맛있는
+              순살치킨 양념치킨이 맛있는 순살치킨 양념치킨이 맛있는 순살치킨
+              양념치킨이 맛있는 순살치킨 양념치킨이 맛있는 순살치킨 양념치킨이
+              맛있는 순살치킨 양념치킨이 맛있는 순살치킨 양념치킨이 맛있는
+              순살치킨 양념치킨이 맛있는 순살치킨 양념치킨이 맛있는 순살치킨
+              양념치킨이 맛있는 순살치킨 양념치킨이 맛있는 순살치킨 양념
+            </TdWrapper>
+            <TdWrapper>dd</TdWrapper>
+            <TdWrapper>dd</TdWrapper>
+          </GridWrapper>
+          <p style={{ textAlign: "right" }}>업데이트 : 2020.03.04</p>
+        </StoreWrapper>
+        <PostWrapper>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <ReviewWrapper>리뷰 (5)</ReviewWrapper>
+            <Button type="primary" onClick={handleClick}>
+              리뷰쓰기
+            </Button>
+          </div>
+          {Posts.map(p => {
+            return <PostCardd post={p} />;
+          })}
+        </PostWrapper>
+      </AppLayout>
+    </>
   );
 };
 
