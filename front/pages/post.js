@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
-import { LOAD_POST_REQUEST } from "../reducers/post";
+import { LOAD_USER_REQUEST } from "../reducers/user";
 import PostForm from "../containers/PostForm";
 
 // const Post = ({ id }) => {
@@ -62,8 +62,14 @@ import PostForm from "../containers/PostForm";
 
 // export default Post;
 
-const Post = () => {
-  return <PostForm />;
+const Post = ({ storeid }) => {
+  console.log("in post", storeid);
+  return <PostForm storeid={storeid} />;
+};
+
+Post.getInitialProps = async context => {
+  const storeid = context.query.storeid;
+  return { storeid };
 };
 
 export default Post;

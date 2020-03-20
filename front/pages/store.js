@@ -99,8 +99,9 @@ const PWrapper = styled.div`
 const Store = ({ id }) => {
   const { store } = useSelector(state => state.stores);
   const [rateValue, setRateValue] = useState(0);
+  const { me } = useSelector(state => state.user);
   const handleClick = useCallback(() => {
-    Router.push("/post");
+    Router.push("/post/" + id);
   }, []);
   const handleRateChange = useCallback(value => {
     let integer = Math.floor(value);
@@ -155,9 +156,15 @@ const Store = ({ id }) => {
         <PostWrapper>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <ReviewWrapper>리뷰 (5)</ReviewWrapper>
-            <Button type="primary" onClick={handleClick}>
-              리뷰쓰기
-            </Button>
+            {me ? (
+              <Button type="primary" onClick={handleClick}>
+                리뷰쓰기
+              </Button>
+            ) : (
+              <div style={{ paddingTop: "0.5rem" }}>
+                후기를 남기려면 로그인하세요
+              </div>
+            )}
           </div>
           {Posts.map(p => {
             return <PostCardd post={p} />;

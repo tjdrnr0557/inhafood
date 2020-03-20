@@ -7,7 +7,7 @@ import {
   UPLOAD_IMAGES_REQUEST
 } from "../reducers/post";
 
-const PostForm = () => {
+const PostForm = ({ storeid }) => {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
   const { imagePaths, isAddingPost, postAdded } = useSelector(
@@ -76,6 +76,7 @@ const PostForm = () => {
       encType="multipart/form-data"
       onSubmit={onSubmitForm}
     >
+      <h1>{storeid}</h1>
       <Input.TextArea
         maxLength={140}
         placeholder=""

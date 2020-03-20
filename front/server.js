@@ -31,10 +31,6 @@ app.prepare().then(() => {
     })
   );
 
-  server.get("/post/:id", (req, res) => {
-    return app.render(req, res, "/post", { id: req.params.id });
-  });
-
   server.get("/hashtag/:tag", (req, res) => {
     return app.render(req, res, "/hashtag", { tag: req.params.tag });
   });
@@ -49,6 +45,10 @@ app.prepare().then(() => {
 
   server.get("/store/:id", (req, res) => {
     return app.render(req, res, "/store", { id: req.params.id });
+  });
+
+  server.get("/post/:storeid", (req, res) => {
+    return app.render(req, res, "/post", { storeid: req.params.storeid });
   });
 
   server.get("*", (req, res) => {
