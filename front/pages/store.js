@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import PostCardd from "../containers/PostCardd";
 import { useDispatch, useSelector } from "react-redux";
@@ -98,9 +98,18 @@ const PWrapper = styled.div`
 
 const Store = ({ id }) => {
   const { store } = useSelector(state => state.stores);
-
+  const [rateValue, setRateValue] = useState(0);
   const handleClick = useCallback(() => {
     Router.push("/post");
+  }, []);
+  const handleRateChange = useCallback(value => {
+    let integer = Math.floor(value);
+    let point = value - integer;
+    let rate;
+    if (point < 0.25) rate = integer;
+    else if (point >= 0.25 && point < 0.75) rate = integer + 0.5;
+    else if (point >= 0.75) rate = integer + 1;
+    setRateValue(rate);
   }, []);
 
   return (
@@ -108,7 +117,12 @@ const Store = ({ id }) => {
       <HeadWrapper src={store[0].img}>
         <ImgWrapper>
           <NameWrapper>{store && store[0].storename}</NameWrapper>
-          <Rate allowHalf value={3.5} />
+          <Rate
+            allowHalf
+            allowClear={false}
+            onChange={handleRateChange}
+            value={rateValue}
+          />
           <PWrapper>평점 3.5</PWrapper>
         </ImgWrapper>
       </HeadWrapper>
