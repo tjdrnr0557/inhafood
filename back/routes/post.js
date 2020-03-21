@@ -18,7 +18,7 @@ const upload = multer({
       done(null, basename + new Date().valueOf() + ext);
     }
   }),
-  limits: { fileSize: 20 * 1024 * 1024 }
+  limits: { fileSize: 100 * 1024 * 1024 }
 });
 
 router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {

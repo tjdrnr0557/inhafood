@@ -11,6 +11,7 @@ const db = require("./models");
 const userAPIRouter = require("./routes/user");
 const storesAPIRouter = require("./routes/stores");
 const storeAPIRouter = require("./routes/store");
+const postAPIRouter = require("./routes/post");
 const postsAPIRouter = require("./routes/posts");
 
 dotenv.config();
@@ -49,6 +50,7 @@ app.use("/api/user", userAPIRouter);
 app.use("/api/posts", postsAPIRouter);
 app.use("/api/stores", storesAPIRouter);
 app.use("/api/store", storeAPIRouter);
+app.use("/api/post", postAPIRouter);
 
 app.listen(3065, () => {
   console.log("server is running on http://localhost:3065");

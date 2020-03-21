@@ -45,11 +45,11 @@ const PostForm = ({ storeid }) => {
   }, []);
 
   const onChangeImages = useCallback(e => {
-    console.log(e.target.files);
     const imageFormData = new FormData();
     [].forEach.call(e.target.files, f => {
       imageFormData.append("image", f);
-    });
+    }); //call 자세히 알아보기
+    console.log("imgForm", imageFormData.image);
     dispatch({
       type: UPLOAD_IMAGES_REQUEST,
       data: imageFormData

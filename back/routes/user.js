@@ -109,7 +109,7 @@ router.post("/login", (req, res, next) => {
           // ],
           attributes: ["id", "nickname", "userId"]
         });
-        console.log("what is fullUser", fullUser);
+        //console.log("what is fullUser", fullUser);
         return res.json(fullUser);
       } catch (e) {
         next(e);

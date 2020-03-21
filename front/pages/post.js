@@ -63,7 +63,6 @@ import PostForm from "../containers/PostForm";
 // export default Post;
 
 const Post = ({ storeid }) => {
-  console.log("in post", storeid);
   return <PostForm storeid={storeid} />;
 };
 
