@@ -3117,6 +3117,7 @@ function addPostAPI(postData) {
 function* addPost(action) {
   try {
     const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(addPostAPI, action.data);
+    console.log("post saga result", result);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
       // post reducer의 데이터를 수정
       type: _reducers_post__WEBPACK_IMPORTED_MODULE_2__["ADD_POST_SUCCESS"],
@@ -3275,7 +3276,6 @@ function uploadImagesAPI(formData) {
 function* uploadImages(action) {
   try {
     const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(uploadImagesAPI, action.data);
-    console.log("result", result);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
       type: _reducers_post__WEBPACK_IMPORTED_MODULE_2__["UPLOAD_IMAGES_SUCCESS"],
       data: result.data
@@ -3619,17 +3619,16 @@ function* watchLogOut() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_user__WEBPACK_IMPORTED_MODULE_2__["LOG_OUT_REQUEST"], logOut);
 }
 
-function loadUserAPI(userId) {
+function loadUserAPI() {
   // 서버에 요청을 보내는 부분
-  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(userId ? `/user/${userId}` : "/user/", {
-    withCredentials: true // 클라이언트에서 요청 보낼 때는 브라우저가 쿠키를 같이 동봉해줘요
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/user/", {
+    withCredentials: true // 클라이언트에서 요청 보낼 때는 브라우저가 쿠키를 같이 동봉해줌
 
-  }); // 서버사이드렌더링일 때는, 브라우저가 없어요.
+  }); // 서버사이드렌더링일 때는, 브라우저가 없다.
 }
 
 function* loadUser(action) {
   try {
-    // yield call(loadUserAPI);
     const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadUserAPI, action.data);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
       // put은 dispatch 동일

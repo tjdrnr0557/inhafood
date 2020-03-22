@@ -76,7 +76,6 @@ const PostForm = ({ storeid }) => {
       encType="multipart/form-data"
       onSubmit={onSubmitForm}
     >
-      <h1>{storeid}</h1>
       <Input.TextArea
         maxLength={140}
         placeholder=""

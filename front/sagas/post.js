@@ -49,6 +49,7 @@ function addPostAPI(postData) {
 function* addPost(action) {
   try {
     const result = yield call(addPostAPI, action.data);
+    console.log("post saga result", result);
     yield put({
       // post reducer의 데이터를 수정
       type: ADD_POST_SUCCESS,
@@ -211,7 +212,6 @@ function uploadImagesAPI(formData) {
 function* uploadImages(action) {
   try {
     const result = yield call(uploadImagesAPI, action.data);
-    console.log("result", result);
     yield put({
       type: UPLOAD_IMAGES_SUCCESS,
       data: result.data

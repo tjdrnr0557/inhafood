@@ -24,22 +24,12 @@ const upload = multer({
 router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
   // POST /api/post
   try {
-    const hashtags = req.body.content.match(/#[^\s]+/g);
+    console.log("req.bodybody", req.body);
     const newPost = await db.Post.create({
       content: req.body.content, // ex) '제로초 파이팅 #구독 #좋아요 눌러주세요'
       UserId: req.user.id
     });
-    if (hashtags) {
-      const result = await Promise.all(
-        hashtags.map(tag =>
-          db.Hashtag.findOrCreate({
-            where: { name: tag.slice(1).toLowerCase() }
-          })
-        )
-      );
-      console.log(result);
-      await newPost.addHashtags(result.map(r => r[0]));
-    }
+    console.log("first NewPost", newPost);
     if (req.body.image) {
       // 이미지 주소를 여러개 올리면 image: [주소1, 주소2]
       if (Array.isArray(req.body.image)) {
@@ -55,6 +45,7 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
         await newPost.addImage(image);
       }
     }
+    console.log("second NewPost", newPost);
     // const User = await newPost.getUser();
     // newPost.User = User;
     // res.json(newPost);
@@ -67,11 +58,6 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
         },
         {
           model: db.Image
-        },
-        {
-          model: db.User,
-          as: "Likers",
-          attributes: ["id"]
         }
       ]
     });
@@ -83,7 +69,7 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
 });
 
 router.post("/images", upload.array("image"), (req, res) => {
-  console.log(req.files);
+  console.log("inserver", req.files);
   res.json(req.files.map(v => v.filename));
 });
 
