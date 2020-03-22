@@ -24,28 +24,31 @@ const upload = multer({
 router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
   // POST /api/post
   try {
-    console.log("req.bodybody", req.body);
     const newPost = await db.Post.create({
       content: req.body.content, // ex) '제로초 파이팅 #구독 #좋아요 눌러주세요'
-      UserId: req.user.id
+      UserId: req.user.id,
+      StoreId: req.body.StoreId
     });
-    console.log("first NewPost", newPost);
+    //console.log("first NewPost", newPost);
     if (req.body.image) {
       // 이미지 주소를 여러개 올리면 image: [주소1, 주소2]
       if (Array.isArray(req.body.image)) {
         const images = await Promise.all(
           req.body.image.map(image => {
-            return db.Image.create({ src: image });
+            return db.Image.create({ src: image, StoreId: req.body.StoreId });
           })
         );
         await newPost.addImages(images);
       } else {
         // 이미지를 하나만 올리면 image: 주소1
-        const image = await db.Image.create({ src: req.body.image });
+        const image = await db.Image.create({
+          src: req.body.image,
+          StoreId: req.body.StoreId
+        });
         await newPost.addImage(image);
       }
     }
-    console.log("second NewPost", newPost);
+
     // const User = await newPost.getUser();
     // newPost.User = User;
     // res.json(newPost);
@@ -57,10 +60,12 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
           attributes: ["id", "nickname"]
         },
         {
-          model: db.Image
+          model: db.Image,
+          attributes: ["src"]
         }
       ]
     });
+    //console.log("second NewPost", fullPost);
     res.json(fullPost);
   } catch (e) {
     console.error(e);
@@ -69,7 +74,6 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
 });
 
 router.post("/images", upload.array("image"), (req, res) => {
-  console.log("inserver", req.files);
   res.json(req.files.map(v => v.filename));
 });
 

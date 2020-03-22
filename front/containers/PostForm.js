@@ -32,6 +32,7 @@ const PostForm = ({ storeid }) => {
         formData.append("image", i);
       });
       formData.append("content", text);
+      formData.append("StoreId", storeid);
       dispatch({
         type: ADD_POST_REQUEST,
         data: formData
