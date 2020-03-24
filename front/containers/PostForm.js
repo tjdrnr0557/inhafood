@@ -50,7 +50,6 @@ const PostForm = ({ storeid }) => {
     [].forEach.call(e.target.files, f => {
       imageFormData.append("image", f);
     }); //call 자세히 알아보기
-    console.log("imgForm", imageFormData.image);
     dispatch({
       type: UPLOAD_IMAGES_REQUEST,
       data: imageFormData

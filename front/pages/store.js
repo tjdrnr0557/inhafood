@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
-import PostCardd from "../containers/PostCardd";
+import PostCard from "../containers/PostCard";
 import { useDispatch, useSelector } from "react-redux";
 import { LOAD_STORE_REQUEST } from "../reducers/stores";
 import { Rate, Button } from "antd";
@@ -162,7 +162,7 @@ const Store = ({ id }) => {
             </Button>
           </div>
           {Posts.map(p => {
-            return <PostCardd post={p} />;
+            return <PostCard post={p} />;
           })}
         </PostWrapper>
       </AppLayout>

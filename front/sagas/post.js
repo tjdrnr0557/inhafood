@@ -4,12 +4,6 @@ import {
   ADD_POST_FAILURE,
   ADD_POST_REQUEST,
   ADD_POST_SUCCESS,
-  LOAD_MAIN_POSTS_FAILURE,
-  LOAD_MAIN_POSTS_REQUEST,
-  LOAD_MAIN_POSTS_SUCCESS,
-  LOAD_USER_POSTS_FAILURE,
-  LOAD_USER_POSTS_REQUEST,
-  LOAD_USER_POSTS_SUCCESS,
   UPLOAD_IMAGES_FAILURE,
   UPLOAD_IMAGES_REQUEST,
   UPLOAD_IMAGES_SUCCESS,
@@ -91,11 +85,11 @@ function* watchAddPost() {
 //   yield takeLatest(LOAD_USER_POSTS_REQUEST, loadUserPosts);
 // }
 
-// function uploadImagesAPI(formData) {
-//   return axios.post("/post/images", formData, {
-//     withCredentials: true
-//   });
-// }
+function uploadImagesAPI(formData) {
+  return axios.post("/post/images", formData, {
+    withCredentials: true
+  });
+}
 
 function* uploadImages(action) {
   try {
@@ -124,6 +118,7 @@ function loadPostAPI(postId) {
 function* loadPost(action) {
   try {
     const result = yield call(loadPostAPI, action.data);
+    console.log("result.data", result.data);
     yield put({
       type: LOAD_POST_SUCCESS,
       data: result.data
@@ -142,14 +137,5 @@ function* watchLoadPost() {
 }
 
 export default function* postSaga() {
-  yield all([
-    // fork(watchLoadMainPosts),
-    fork(watchAddPost),
-
-    //fork(watchLoadUserPosts),
-    fork(watchUploadImages),
-
-    //fork(watchRemovePost),
-    fork(watchLoadPost)
-  ]);
+  yield all([fork(watchAddPost), fork(watchUploadImages), fork(watchLoadPost)]);
 }

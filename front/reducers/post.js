@@ -8,7 +8,6 @@ export const initialState = {
   postAdded: false, // 포스트 업로드 성공
   isAddingComment: false,
   addCommentErrorReason: "",
-  commentAdded: false,
   singlePost: null
 };
 

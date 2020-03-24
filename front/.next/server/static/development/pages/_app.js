@@ -2517,7 +2517,6 @@ const initialState = {
   // 포스트 업로드 성공
   isAddingComment: false,
   addCommentErrorReason: "",
-  commentAdded: false,
   singlePost: null
 };
 const LOAD_MAIN_POSTS_REQUEST = "LOAD_MAIN_POSTS_REQUEST";
@@ -2999,12 +2998,13 @@ function* watchAddPost() {
 // function* watchLoadUserPosts() {
 //   yield takeLatest(LOAD_USER_POSTS_REQUEST, loadUserPosts);
 // }
-// function uploadImagesAPI(formData) {
-//   return axios.post("/post/images", formData, {
-//     withCredentials: true
-//   });
-// }
 
+
+function uploadImagesAPI(formData) {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/post/images", formData, {
+    withCredentials: true
+  });
+}
 
 function* uploadImages(action) {
   try {
@@ -3033,6 +3033,7 @@ function loadPostAPI(postId) {
 function* loadPost(action) {
   try {
     const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadPostAPI, action.data);
+    console.log("result.data", result.data);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
       type: _reducers_post__WEBPACK_IMPORTED_MODULE_2__["LOAD_POST_SUCCESS"],
       data: result.data
@@ -3051,10 +3052,7 @@ function* watchLoadPost() {
 }
 
 function* postSaga() {
-  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([// fork(watchLoadMainPosts),
-  Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPost), //fork(watchLoadUserPosts),
-  Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchUploadImages), //fork(watchRemovePost),
-  Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLoadPost)]);
+  yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchAddPost), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchUploadImages), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["fork"])(watchLoadPost)]);
 }
 
 /***/ }),
