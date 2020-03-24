@@ -1,6 +1,6 @@
 import produce from "immer";
 
-export const initialState = { storePosts: [], store: {} };
+export const initialState = { stores: [], store: {}, Posts: {} };
 
 export const LOAD_STORES_REQUEST = "LOAD_STORES_REQUEST";
 export const LOAD_STORES_SUCCESS = "LOAD_STORES_SUCCESS";
@@ -17,7 +17,7 @@ export default (state = initialState, action) => {
       }
       case LOAD_STORES_SUCCESS: {
         action.data.forEach(d => {
-          draft.storePosts.push(d);
+          draft.stores.push(d);
         });
         break;
       }

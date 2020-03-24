@@ -17,7 +17,6 @@ function addPostAPI(postData) {
     withCredentials: true
   });
 }
-
 function* addPost(action) {
   try {
     const result = yield call(addPostAPI, action.data);
@@ -34,63 +33,15 @@ function* addPost(action) {
     });
   }
 }
-
 function* watchAddPost() {
   yield takeLatest(ADD_POST_REQUEST, addPost);
 }
-
-// function loadMainPostsAPI(lastId = 0, limit = 10) {
-//   return axios.get(`/posts?lastId=${lastId}&limit=${limit}`);
-// }
-
-// function* loadMainPosts(action) {
-//   try {
-//     const result = yield call(loadMainPostsAPI, action.lastId);
-//     yield put({
-//       type: LOAD_MAIN_POSTS_SUCCESS,
-//       data: result.data
-//     });
-//   } catch (e) {
-//     yield put({
-//       type: LOAD_MAIN_POSTS_FAILURE,
-//       error: e
-//     });
-//   }
-// }
-
-// function* watchLoadMainPosts() {
-//   yield throttle(2000, LOAD_MAIN_POSTS_REQUEST, loadMainPosts);
-// }
-
-// function loadUserPostsAPI(id) {
-//   return axios.get(`/user/${id || 0}/posts`);
-// }
-
-// function* loadUserPosts(action) {
-//   try {
-//     const result = yield call(loadUserPostsAPI, action.data);
-//     yield put({
-//       type: LOAD_USER_POSTS_SUCCESS,
-//       data: result.data
-//     });
-//   } catch (e) {
-//     yield put({
-//       type: LOAD_USER_POSTS_FAILURE,
-//       error: e
-//     });
-//   }
-// }
-
-// function* watchLoadUserPosts() {
-//   yield takeLatest(LOAD_USER_POSTS_REQUEST, loadUserPosts);
-// }
 
 function uploadImagesAPI(formData) {
   return axios.post("/post/images", formData, {
     withCredentials: true
   });
 }
-
 function* uploadImages(action) {
   try {
     const result = yield call(uploadImagesAPI, action.data);
@@ -106,7 +57,6 @@ function* uploadImages(action) {
     });
   }
 }
-
 function* watchUploadImages() {
   yield takeLatest(UPLOAD_IMAGES_REQUEST, uploadImages);
 }
@@ -114,7 +64,6 @@ function* watchUploadImages() {
 function loadPostAPI(postId) {
   return axios.get(`/post/${postId}`);
 }
-
 function* loadPost(action) {
   try {
     const result = yield call(loadPostAPI, action.data);
@@ -131,7 +80,6 @@ function* loadPost(action) {
     });
   }
 }
-
 function* watchLoadPost() {
   yield takeLatest(LOAD_POST_REQUEST, loadPost);
 }

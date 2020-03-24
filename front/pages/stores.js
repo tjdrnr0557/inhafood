@@ -22,7 +22,7 @@ const HeadWrapper = styled.div`
 `;
 
 const Stores = ({ kindName }) => {
-  const { storePosts } = useSelector(state => state.stores);
+  const { stores } = useSelector(state => state.stores);
 
   return (
     <>
@@ -31,8 +31,8 @@ const Stores = ({ kindName }) => {
         <p>치킨 / 찜닭 / 닭한마리 / 닭요리</p>
       </HeadWrapper>
       <StoreWrapper>
-        {storePosts &&
-          storePosts.map(c => {
+        {stores &&
+          stores.map(c => {
             return <StoreCard store={c} />;
           })}
       </StoreWrapper>

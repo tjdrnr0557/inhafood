@@ -11,14 +11,6 @@ export const initialState = {
   singlePost: null
 };
 
-export const LOAD_MAIN_POSTS_REQUEST = "LOAD_MAIN_POSTS_REQUEST";
-export const LOAD_MAIN_POSTS_SUCCESS = "LOAD_MAIN_POSTS_SUCCESS";
-export const LOAD_MAIN_POSTS_FAILURE = "LOAD_MAIN_POSTS_FAILURE";
-
-export const LOAD_USER_POSTS_REQUEST = "LOAD_USER_POSTS_REQUEST";
-export const LOAD_USER_POSTS_SUCCESS = "LOAD_USER_POSTS_SUCCESS";
-export const LOAD_USER_POSTS_FAILURE = "LOAD_USER_POSTS_FAILURE";
-
 export const UPLOAD_IMAGES_REQUEST = "UPLOAD_IMAGES_REQUEST";
 export const UPLOAD_IMAGES_SUCCESS = "UPLOAD_IMAGES_SUCCESS";
 export const UPLOAD_IMAGES_FAILURE = "UPLOAD_IMAGES_FAILURE";
@@ -73,39 +65,6 @@ export default (state = initialState, action) => {
       case ADD_POST_FAILURE: {
         draft.isAddingPost = false;
         draft.addPostErrorReason = action.error;
-        break;
-      }
-      case LOAD_MAIN_POSTS_REQUEST:
-      case LOAD_USER_POSTS_REQUEST: {
-        draft.mainPosts = !action.lastId ? [] : draft.mainPosts;
-        draft.hasMorePost = action.lastId ? draft.hasMorePost : true;
-        break;
-      }
-      case LOAD_MAIN_POSTS_SUCCESS:
-      case LOAD_USER_POSTS_SUCCESS: {
-        action.data.forEach(d => {
-          draft.mainPosts.push(d);
-        });
-        draft.hasMorePost = action.data.length === 10;
-        break;
-      }
-      case LOAD_MAIN_POSTS_FAILURE:
-      case LOAD_USER_POSTS_FAILURE: {
-        break;
-      }
-      case REMOVE_POST_REQUEST: {
-        break;
-      }
-      case REMOVE_POST_SUCCESS: {
-        const index = draft.mainPosts.findIndex(v => v.id === action.data);
-        draft.mainPosts.splice(index, 1);
-        break;
-      }
-      case REMOVE_POST_FAILURE: {
-        break;
-      }
-      case LOAD_POST_SUCCESS: {
-        draft.singlePost = action.data;
         break;
       }
       default: {

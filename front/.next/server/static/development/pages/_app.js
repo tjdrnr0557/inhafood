@@ -2476,18 +2476,12 @@ const rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"]
 /*!**************************!*\
   !*** ./reducers/post.js ***!
   \**************************/
-/*! exports provided: initialState, LOAD_MAIN_POSTS_REQUEST, LOAD_MAIN_POSTS_SUCCESS, LOAD_MAIN_POSTS_FAILURE, LOAD_USER_POSTS_REQUEST, LOAD_USER_POSTS_SUCCESS, LOAD_USER_POSTS_FAILURE, UPLOAD_IMAGES_REQUEST, UPLOAD_IMAGES_SUCCESS, UPLOAD_IMAGES_FAILURE, REMOVE_IMAGE, ADD_POST_REQUEST, ADD_POST_SUCCESS, ADD_POST_FAILURE, REMOVE_POST_REQUEST, REMOVE_POST_SUCCESS, REMOVE_POST_FAILURE, LOAD_POST_REQUEST, LOAD_POST_SUCCESS, LOAD_POST_FAILURE, default */
+/*! exports provided: initialState, UPLOAD_IMAGES_REQUEST, UPLOAD_IMAGES_SUCCESS, UPLOAD_IMAGES_FAILURE, REMOVE_IMAGE, ADD_POST_REQUEST, ADD_POST_SUCCESS, ADD_POST_FAILURE, REMOVE_POST_REQUEST, REMOVE_POST_SUCCESS, REMOVE_POST_FAILURE, LOAD_POST_REQUEST, LOAD_POST_SUCCESS, LOAD_POST_FAILURE, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialState", function() { return initialState; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_MAIN_POSTS_REQUEST", function() { return LOAD_MAIN_POSTS_REQUEST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_MAIN_POSTS_SUCCESS", function() { return LOAD_MAIN_POSTS_SUCCESS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_MAIN_POSTS_FAILURE", function() { return LOAD_MAIN_POSTS_FAILURE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_POSTS_REQUEST", function() { return LOAD_USER_POSTS_REQUEST; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_POSTS_SUCCESS", function() { return LOAD_USER_POSTS_SUCCESS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_USER_POSTS_FAILURE", function() { return LOAD_USER_POSTS_FAILURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPLOAD_IMAGES_REQUEST", function() { return UPLOAD_IMAGES_REQUEST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPLOAD_IMAGES_SUCCESS", function() { return UPLOAD_IMAGES_SUCCESS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPLOAD_IMAGES_FAILURE", function() { return UPLOAD_IMAGES_FAILURE; });
@@ -2519,12 +2513,6 @@ const initialState = {
   addCommentErrorReason: "",
   singlePost: null
 };
-const LOAD_MAIN_POSTS_REQUEST = "LOAD_MAIN_POSTS_REQUEST";
-const LOAD_MAIN_POSTS_SUCCESS = "LOAD_MAIN_POSTS_SUCCESS";
-const LOAD_MAIN_POSTS_FAILURE = "LOAD_MAIN_POSTS_FAILURE";
-const LOAD_USER_POSTS_REQUEST = "LOAD_USER_POSTS_REQUEST";
-const LOAD_USER_POSTS_SUCCESS = "LOAD_USER_POSTS_SUCCESS";
-const LOAD_USER_POSTS_FAILURE = "LOAD_USER_POSTS_FAILURE";
 const UPLOAD_IMAGES_REQUEST = "UPLOAD_IMAGES_REQUEST";
 const UPLOAD_IMAGES_SUCCESS = "UPLOAD_IMAGES_SUCCESS";
 const UPLOAD_IMAGES_FAILURE = "UPLOAD_IMAGES_FAILURE";
@@ -2590,53 +2578,6 @@ const LOAD_POST_FAILURE = "LOAD_POST_FAILURE";
           break;
         }
 
-      case LOAD_MAIN_POSTS_REQUEST:
-      case LOAD_USER_POSTS_REQUEST:
-        {
-          draft.mainPosts = !action.lastId ? [] : draft.mainPosts;
-          draft.hasMorePost = action.lastId ? draft.hasMorePost : true;
-          break;
-        }
-
-      case LOAD_MAIN_POSTS_SUCCESS:
-      case LOAD_USER_POSTS_SUCCESS:
-        {
-          action.data.forEach(d => {
-            draft.mainPosts.push(d);
-          });
-          draft.hasMorePost = action.data.length === 10;
-          break;
-        }
-
-      case LOAD_MAIN_POSTS_FAILURE:
-      case LOAD_USER_POSTS_FAILURE:
-        {
-          break;
-        }
-
-      case REMOVE_POST_REQUEST:
-        {
-          break;
-        }
-
-      case REMOVE_POST_SUCCESS:
-        {
-          const index = draft.mainPosts.findIndex(v => v.id === action.data);
-          draft.mainPosts.splice(index, 1);
-          break;
-        }
-
-      case REMOVE_POST_FAILURE:
-        {
-          break;
-        }
-
-      case LOAD_POST_SUCCESS:
-        {
-          draft.singlePost = action.data;
-          break;
-        }
-
       default:
         {
           break;
@@ -2667,8 +2608,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var immer__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(immer__WEBPACK_IMPORTED_MODULE_0__);
 
 const initialState = {
-  storePosts: [],
-  store: {}
+  stores: [],
+  store: {},
+  Posts: {}
 };
 const LOAD_STORES_REQUEST = "LOAD_STORES_REQUEST";
 const LOAD_STORES_SUCCESS = "LOAD_STORES_SUCCESS";
@@ -2687,7 +2629,7 @@ const LOAD_STORE_FAILURE = "LOAD_STORE_FAILURE";
       case LOAD_STORES_SUCCESS:
         {
           action.data.forEach(d => {
-            draft.storePosts.push(d);
+            draft.stores.push(d);
           });
           break;
         }
@@ -2958,47 +2900,7 @@ function* addPost(action) {
 
 function* watchAddPost() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeLatest"])(_reducers_post__WEBPACK_IMPORTED_MODULE_2__["ADD_POST_REQUEST"], addPost);
-} // function loadMainPostsAPI(lastId = 0, limit = 10) {
-//   return axios.get(`/posts?lastId=${lastId}&limit=${limit}`);
-// }
-// function* loadMainPosts(action) {
-//   try {
-//     const result = yield call(loadMainPostsAPI, action.lastId);
-//     yield put({
-//       type: LOAD_MAIN_POSTS_SUCCESS,
-//       data: result.data
-//     });
-//   } catch (e) {
-//     yield put({
-//       type: LOAD_MAIN_POSTS_FAILURE,
-//       error: e
-//     });
-//   }
-// }
-// function* watchLoadMainPosts() {
-//   yield throttle(2000, LOAD_MAIN_POSTS_REQUEST, loadMainPosts);
-// }
-// function loadUserPostsAPI(id) {
-//   return axios.get(`/user/${id || 0}/posts`);
-// }
-// function* loadUserPosts(action) {
-//   try {
-//     const result = yield call(loadUserPostsAPI, action.data);
-//     yield put({
-//       type: LOAD_USER_POSTS_SUCCESS,
-//       data: result.data
-//     });
-//   } catch (e) {
-//     yield put({
-//       type: LOAD_USER_POSTS_FAILURE,
-//       error: e
-//     });
-//   }
-// }
-// function* watchLoadUserPosts() {
-//   yield takeLatest(LOAD_USER_POSTS_REQUEST, loadUserPosts);
-// }
-
+}
 
 function uploadImagesAPI(formData) {
   return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/post/images", formData, {
