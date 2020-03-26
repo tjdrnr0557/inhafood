@@ -2985,6 +2985,7 @@ function loadStoresAPI(kindName) {
 function* loadStores(action) {
   try {
     const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadStoresAPI, action.data);
+    console.log("result??", result.data);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
       type: _reducers_stores_js__WEBPACK_IMPORTED_MODULE_2__["LOAD_STORES_SUCCESS"],
       data: result.data
@@ -3010,6 +3011,7 @@ function loadStoreAPI(id) {
 function* loadStore(action) {
   try {
     const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadStoreAPI, action.data);
+    console.log("result.data", result.data[0].Posts);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
       type: _reducers_stores_js__WEBPACK_IMPORTED_MODULE_2__["LOAD_STORE_SUCCESS"],
       data: result.data

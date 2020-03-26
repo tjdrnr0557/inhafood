@@ -7,7 +7,16 @@ const router = express.Router();
 router.get("/:id", async (req, res, next) => {
   try {
     const store = await db.Store.findAll({
-      where: { id: req.params.id }
+      where: { id: req.params.id },
+      include: [
+        {
+          model: db.Image,
+          attributes: ["src", "PostId"]
+        },
+        {
+          model: db.Post
+        }
+      ]
     });
     //console.log("@@@@@@@@@@@ in server stores", store);
     res.json(store);

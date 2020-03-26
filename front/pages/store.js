@@ -116,9 +116,9 @@ const Store = ({ id }) => {
 
   return (
     <>
-      <HeadWrapper src={store[0].img}>
+      <HeadWrapper>
         <ImgWrapper>
-          <NameWrapper>{store && store[0].storename}</NameWrapper>
+          <NameWrapper></NameWrapper>
           <Rate
             allowHalf
             allowClear={false}
