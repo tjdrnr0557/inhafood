@@ -2190,7 +2190,7 @@ const NodeBird = ({
   store,
   pageProps
 }) => {
-  return __jsx(next_app__WEBPACK_IMPORTED_MODULE_9__["Container"], null, __jsx(react_redux__WEBPACK_IMPORTED_MODULE_5__["Provider"], {
+  return __jsx(react_redux__WEBPACK_IMPORTED_MODULE_5__["Provider"], {
     store: store
   }, __jsx(react_helmet__WEBPACK_IMPORTED_MODULE_8___default.a, {
     title: "\uC778\uD558\uD478\uB4DC",
@@ -2231,7 +2231,7 @@ const NodeBird = ({
       rel: "stylesheet",
       href: "https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
     }]
-  }), __jsx(_components_AppLayout__WEBPACK_IMPORTED_MODULE_10__["default"], null, __jsx(Component, pageProps))));
+  }), __jsx(_components_AppLayout__WEBPACK_IMPORTED_MODULE_10__["default"], null, __jsx(Component, pageProps)));
 };
 
 NodeBird.propTypes = {
@@ -2252,13 +2252,12 @@ NodeBird.getInitialProps = async context => {
 
   if (ctx.isServer && cookie) {
     axios__WEBPACK_IMPORTED_MODULE_7___default.a.defaults.headers.Cookie = cookie;
-  }
+  } // if (!state.user.me) {
+  //   ctx.store.dispatch({
+  //     type: LOAD_USER_REQUEST
+  //   });
+  // }
 
-  if (!state.user.me) {
-    ctx.store.dispatch({
-      type: _reducers_user__WEBPACK_IMPORTED_MODULE_13__["LOAD_USER_REQUEST"]
-    });
-  }
 
   if (Component.getInitialProps) {
     pageProps = (await Component.getInitialProps(ctx)) || {};
@@ -2985,7 +2984,6 @@ function loadStoresAPI(kindName) {
 function* loadStores(action) {
   try {
     const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadStoresAPI, action.data);
-    console.log("result??", result.data);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
       type: _reducers_stores_js__WEBPACK_IMPORTED_MODULE_2__["LOAD_STORES_SUCCESS"],
       data: result.data
@@ -3010,8 +3008,8 @@ function loadStoreAPI(id) {
 
 function* loadStore(action) {
   try {
-    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadStoreAPI, action.data);
-    console.log("result.data", result.data[0].Posts);
+    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadStoreAPI, action.data); // console.log("result.data", result.data);
+
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
       type: _reducers_stores_js__WEBPACK_IMPORTED_MODULE_2__["LOAD_STORE_SUCCESS"],
       data: result.data

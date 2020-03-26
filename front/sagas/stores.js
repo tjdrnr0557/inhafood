@@ -16,7 +16,6 @@ function loadStoresAPI(kindName) {
 function* loadStores(action) {
   try {
     const result = yield call(loadStoresAPI, action.data);
-    console.log("result??", result.data);
     yield put({
       type: LOAD_STORES_SUCCESS,
       data: result.data
@@ -43,7 +42,7 @@ function loadStoreAPI(id) {
 function* loadStore(action) {
   try {
     const result = yield call(loadStoreAPI, action.data);
-    console.log("result.data", result.data[0].Posts);
+    // console.log("result.data", result.data);
     yield put({
       type: LOAD_STORE_SUCCESS,
       data: result.data
