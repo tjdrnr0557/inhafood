@@ -54,7 +54,7 @@ const StoreCard = ({ store }) => {
   }, [store, store.id]);
   return (
     <CardWrapper onClick={handleClick}>
-      <EachImage alt="example" src={store.img} />
+      <EachImage alt="example" src={`http://localhost:3065/${store.img}`} />
       <EachDescription>
         <H1wrapper>{store.storename}</H1wrapper>
         <Pwrapper>{store.content}</Pwrapper>

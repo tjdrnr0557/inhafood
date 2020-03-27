@@ -94,7 +94,7 @@ const Store = ({ id }) => {
 
   return (
     <>
-      <HeadWrapper>
+      <HeadWrapper src={`http://localhost:3065/${store.img}`}>
         <ImgWrapper>
           <NameWrapper>{store.storename}</NameWrapper>
           <Rate allowHalf allowClear={false} value={rateValue} />
