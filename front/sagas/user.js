@@ -123,7 +123,7 @@ function* loadUser(action) {
     });
   } catch (e) {
     // loginAPI 실패
-    console.error(e);
+    //console.error(e);
     yield put({
       type: LOAD_USER_FAILURE,
       error: e

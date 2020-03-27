@@ -1116,10 +1116,6 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_3___default.a {
 
 }
 
-MyDocument.propTypes = {
-  helmet: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.object.isRequired,
-  styleTags: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.object.isRequired
-};
 /* harmony default export */ __webpack_exports__["default"] = (MyDocument);
 
 /***/ }),

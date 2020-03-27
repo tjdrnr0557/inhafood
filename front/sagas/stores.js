@@ -1,4 +1,11 @@
-import { all, call, fork, put, takeEvery } from "redux-saga/effects";
+import {
+  all,
+  call,
+  fork,
+  put,
+  takeEvery,
+  takeLatest
+} from "redux-saga/effects";
 import axios from "axios";
 import {
   LOAD_STORES_REQUEST,
@@ -42,7 +49,7 @@ function loadStoreAPI(id) {
 function* loadStore(action) {
   try {
     const result = yield call(loadStoreAPI, action.data);
-    // console.log("result.data", result.data);
+    console.log("result.data", result.data);
     yield put({
       type: LOAD_STORE_SUCCESS,
       data: result.data

@@ -2176,14 +2176,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
- // class NodeBird extends App {
-//   static getInitialProps(context) {
-//
-//   }
-//   render() {
-//
-//   }
-// }
+
 
 const NodeBird = ({
   Component,
@@ -2252,12 +2245,13 @@ NodeBird.getInitialProps = async context => {
 
   if (ctx.isServer && cookie) {
     axios__WEBPACK_IMPORTED_MODULE_7___default.a.defaults.headers.Cookie = cookie;
-  } // if (!state.user.me) {
-  //   ctx.store.dispatch({
-  //     type: LOAD_USER_REQUEST
-  //   });
-  // }
+  }
 
+  if (!state.user.me) {
+    ctx.store.dispatch({
+      type: _reducers_user__WEBPACK_IMPORTED_MODULE_13__["LOAD_USER_REQUEST"]
+    });
+  }
 
   if (Component.getInitialProps) {
     pageProps = (await Component.getInitialProps(ctx)) || {};
@@ -3008,8 +3002,8 @@ function loadStoreAPI(id) {
 
 function* loadStore(action) {
   try {
-    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadStoreAPI, action.data); // console.log("result.data", result.data);
-
+    const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadStoreAPI, action.data);
+    console.log("result.data", result.data);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
       type: _reducers_stores_js__WEBPACK_IMPORTED_MODULE_2__["LOAD_STORE_SUCCESS"],
       data: result.data
@@ -3159,7 +3153,7 @@ function* loadUser(action) {
     });
   } catch (e) {
     // loginAPI 실패
-    console.error(e);
+    //console.error(e);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
       type: _reducers_user__WEBPACK_IMPORTED_MODULE_2__["LOAD_USER_FAILURE"],
       error: e

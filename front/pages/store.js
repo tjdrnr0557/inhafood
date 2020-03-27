@@ -119,12 +119,7 @@ const Store = ({ id }) => {
       <HeadWrapper>
         <ImgWrapper>
           <NameWrapper></NameWrapper>
-          <Rate
-            allowHalf
-            allowClear={false}
-            onChange={handleRateChange}
-            value={rateValue}
-          />
+          <Rate allowHalf allowClear={false} value={rateValue} />
           <PWrapper>평점 3.5</PWrapper>
         </ImgWrapper>
       </HeadWrapper>

@@ -35,7 +35,11 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
       if (Array.isArray(req.body.image)) {
         const images = await Promise.all(
           req.body.image.map(image => {
-            return db.Image.create({ src: image, StoreId: req.body.StoreId });
+            return db.Image.create({
+              src: image,
+              StoreId: req.body.StoreId,
+              UserId: req.user.id
+            });
           })
         );
         await newPost.addImages(images);
@@ -43,7 +47,8 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
         // 이미지를 하나만 올리면 image: 주소1
         const image = await db.Image.create({
           src: req.body.image,
-          StoreId: req.body.StoreId
+          StoreId: req.body.StoreId,
+          UserId: req.user.id
         });
         await newPost.addImage(image);
       }
