@@ -52,16 +52,17 @@ const RateDate = styled.div`
 `;
 
 const PostCard = ({ post }) => {
+  const { User } = post;
   return (
     <CardWrapper>
       <AvatarWrapper>
         <Avatar size="large" icon="user" />
-        <NameWrapper>닉네임은뭐닉</NameWrapper>
+        <NameWrapper>{User.nickname}</NameWrapper>
       </AvatarWrapper>
       <CommentWrapper>
         <RateDate>
           <RateWrapper>4.4</RateWrapper>
-          <div style={{ color: "#dbdbdb" }}>2020-03-04</div>
+          <div style={{ color: "#dbdbdb" }}>{User.createdAt}</div>
         </RateDate>
         <div>{post.content}</div>
       </CommentWrapper>

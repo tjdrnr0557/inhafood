@@ -2640,6 +2640,7 @@ const LOAD_STORE_FAILURE = "LOAD_STORE_FAILURE";
 
       case LOAD_STORE_SUCCESS:
         {
+          console.log("action.data in reducer", action.data);
           draft.store = action.data;
           break;
         }
@@ -3003,7 +3004,7 @@ function loadStoreAPI(id) {
 function* loadStore(action) {
   try {
     const result = yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(loadStoreAPI, action.data);
-    console.log("result.data", result.data);
+    console.log("result.data", result.data.Posts);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
       type: _reducers_stores_js__WEBPACK_IMPORTED_MODULE_2__["LOAD_STORE_SUCCESS"],
       data: result.data

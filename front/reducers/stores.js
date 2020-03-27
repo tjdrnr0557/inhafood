@@ -29,6 +29,7 @@ export default (state = initialState, action) => {
         break;
       }
       case LOAD_STORE_SUCCESS: {
+        console.log("action.data in reducer", action.data);
         draft.store = action.data;
         break;
       }

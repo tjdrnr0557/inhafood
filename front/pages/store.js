@@ -6,29 +6,6 @@ import { LOAD_STORE_REQUEST } from "../reducers/stores";
 import { Rate, Button } from "antd";
 import Router from "next/router";
 
-const Posts = [
-  {
-    username: "첫번째유저",
-    content:
-      "이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ ? 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ ? 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ 이렇게 아년ㅇ하세요라고 말하는 거도 웃긴거야 ㅇㄹㄴㅇㄹㄴㅇㄹ ",
-    rating: 4.3,
-    createdAt: "2020-03-04"
-  },
-  {
-    username: "첫번째유저",
-    content: "dfsdfsdvxcvxcvsdf",
-    rating: 4.3,
-    createdAt: "2020-03-04"
-  },
-  {
-    username: "첫번째유저",
-    content:
-      "벌써 다섯번째 방문인데 점점 갈수록 감동이 좀 덜하네요 ㅠㅠ 코스도 먹어보고 단품으로도 먹어봤는데 단품으로 시키는게 나은 것 같아요. 요리류는 괜찮은데 생각보다 식사류(짜장면, 짬뽕, 볶음밥 등)이 너무 임팩트가 없어요 ",
-    rating: 4.3,
-    createdAt: "2020-03-04"
-  }
-];
-
 const AppLayout = styled.div`
   padding: 1rem;
 `;
@@ -44,7 +21,6 @@ const HeadWrapper = styled.div`
     height: 20rem;
   }
 `;
-
 const StoreWrapper = styled.div`
   padding: 1rem;
   min-height: 22rem;
@@ -97,9 +73,11 @@ const PWrapper = styled.div`
 `;
 
 const Store = ({ id }) => {
-  const { store } = useSelector(state => state.stores);
-  const [rateValue, setRateValue] = useState(0);
   const { me } = useSelector(state => state.user);
+  const { store } = useSelector(state => state.stores);
+  const { Posts } = store;
+  const [rateValue, setRateValue] = useState(0);
+
   const handleClick = useCallback(() => {
     if (me) Router.push("/post/" + id);
     else Router.push("/login");
@@ -118,7 +96,7 @@ const Store = ({ id }) => {
     <>
       <HeadWrapper>
         <ImgWrapper>
-          <NameWrapper></NameWrapper>
+          <NameWrapper>{store.storename}</NameWrapper>
           <Rate allowHalf allowClear={false} value={rateValue} />
           <PWrapper>평점 3.5</PWrapper>
         </ImgWrapper>
@@ -127,38 +105,31 @@ const Store = ({ id }) => {
         <StoreWrapper>
           <GridWrapper>
             <TdWrapper>주소</TdWrapper>
-            <TdWrapper>
-              <Rate />
-            </TdWrapper>
+            <TdWrapper></TdWrapper>
             <TdWrapper>전화번호</TdWrapper>
             <TdWrapper>4</TdWrapper>
             <TdWrapper>영업시간</TdWrapper>
             <TdWrapper>6</TdWrapper>
             <TdWrapper>메뉴</TdWrapper>
-            <TdWrapper>
-              치킨이 맛있는 순살치킨 양념치킨이 맛있는 순살치킨 양념치킨이
-              맛있는 순살치킨 양념치킨이 맛있는 순살치킨 양념치킨이 맛있는
-              순살치킨 양념치킨이 맛있는 순살치킨 양념치킨이 맛있는 순살치킨
-              양념치킨이 맛있는 순살치킨 양념치킨이 맛있는 순살치킨 양념치킨이
-              맛있는 순살치킨 양념치킨이 맛있는 순살치킨 양념치킨이 맛있는
-              순살치킨 양념치킨이 맛있는 순살치킨 양념치킨이 맛있는 순살치킨
-              양념치킨이 맛있는 순살치킨 양념치킨이 맛있는 순살치킨 양념
-            </TdWrapper>
+            <TdWrapper>{store.content}</TdWrapper>
             <TdWrapper>dd</TdWrapper>
             <TdWrapper>dd</TdWrapper>
           </GridWrapper>
-          <p style={{ textAlign: "right" }}>업데이트 : 2020.03.04</p>
+          <p style={{ textAlign: "right" }}>업데이트 : {store.updatedAt}</p>
         </StoreWrapper>
         <PostWrapper>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <ReviewWrapper>리뷰 (5)</ReviewWrapper>
+            <ReviewWrapper>
+              리뷰 ({store.Posts && store.Posts.length})
+            </ReviewWrapper>
             <Button type="primary" onClick={handleClick}>
               리뷰쓰기
             </Button>
           </div>
-          {Posts.map(p => {
-            return <PostCard post={p} />;
-          })}
+          {Posts &&
+            Posts.map(p => {
+              return <PostCard post={p} />;
+            })}
         </PostWrapper>
       </AppLayout>
     </>

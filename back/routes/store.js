@@ -11,10 +11,14 @@ router.get("/:id", async (req, res, next) => {
       include: [
         {
           model: db.Image,
-          attributes: ["src", "PostId"]
+          attributes: ["src"]
         },
         {
           model: db.Post
+        },
+        {
+          model: db.Post,
+          include: [{ model: db.User, attributes: ["id", "nickname"] }]
         }
       ]
     });

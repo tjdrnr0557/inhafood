@@ -6,6 +6,10 @@ module.exports = (sequelize, DataTypes) => {
       content: {
         type: DataTypes.TEXT, // 매우 긴 글
         allowNull: false
+      },
+      Rate: {
+        type: DataTypes.FLOAT,
+        allowNull: false
       }
     },
     {
