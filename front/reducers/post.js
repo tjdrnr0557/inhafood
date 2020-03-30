@@ -6,6 +6,7 @@ export const initialState = {
   addPostErrorReason: "", // 포스트 업로드 실패 사유
   isAddingPost: false, // 포스트 업로드 중
   postAdded: false, // 포스트 업로드 성공
+  postRate: false,
   isAddingComment: false,
   addCommentErrorReason: "",
   singlePost: null
@@ -53,12 +54,14 @@ export default (state = initialState, action) => {
         draft.isAddingPost = true;
         draft.addingPostErrorReason = "";
         draft.postAdded = false;
+        draft.postRate = false;
         break;
       }
       case ADD_POST_SUCCESS: {
         draft.isAddingPost = false;
         draft.mainPosts.unshift(action.data);
         draft.postAdded = true;
+        draft.postRate = true;
         draft.imagePaths = [];
         break;
       }

@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT, // 매우 긴 글
         allowNull: false
       },
-      Rate: {
+      rate: {
         type: DataTypes.FLOAT,
         allowNull: false
       }

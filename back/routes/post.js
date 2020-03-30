@@ -26,6 +26,7 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
   try {
     const newPost = await db.Post.create({
       content: req.body.content,
+      rate: req.body.rate,
       UserId: req.user.id,
       StoreId: req.body.StoreId
     });

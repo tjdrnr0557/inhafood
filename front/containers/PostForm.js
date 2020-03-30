@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useEffect, useRef } from "react";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Rate } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import {
   ADD_POST_REQUEST,
@@ -10,7 +10,8 @@ import {
 const PostForm = ({ storeid }) => {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
-  const { imagePaths, isAddingPost, postAdded } = useSelector(
+  const [rate, setRate] = useState(0);
+  const { imagePaths, isAddingPost, postAdded, postRate } = useSelector(
     state => state.post
   );
   const imageInput = useRef();
@@ -19,13 +20,17 @@ const PostForm = ({ storeid }) => {
     if (postAdded) {
       setText("");
     }
-  }, [postAdded]);
+    if (postRate) setRate(0);
+  }, [postAdded, postRate]);
 
   const onSubmitForm = useCallback(
     e => {
       e.preventDefault();
       if (!text || !text.trim()) {
-        return alert("게시글을 작성하세요.");
+        return alert("게시글을 작성하세요");
+      }
+      if (!rate) {
+        return alert("평점을 입력해주세요");
       }
       const formData = new FormData();
       imagePaths.forEach(i => {
@@ -33,17 +38,21 @@ const PostForm = ({ storeid }) => {
       });
       formData.append("content", text);
       formData.append("StoreId", storeid);
+      formData.append("rate", rate);
       dispatch({
         type: ADD_POST_REQUEST,
         data: formData
       });
     },
-    [text, imagePaths]
+    [text, imagePaths, rate]
   );
 
   const onChangeText = useCallback(e => {
     setText(e.target.value);
   }, []);
+  const onChangeRate = useCallback(rate => {
+    setRate(rate);
+  });
 
   const onChangeImages = useCallback(e => {
     const imageFormData = new FormData();
@@ -76,6 +85,7 @@ const PostForm = ({ storeid }) => {
       encType="multipart/form-data"
       onSubmit={onSubmitForm}
     >
+      <Rate value={rate} allowHalf onChange={onChangeRate} />
       <Input.TextArea
         maxLength={140}
         placeholder=""

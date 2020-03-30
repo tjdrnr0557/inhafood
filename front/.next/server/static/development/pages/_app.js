@@ -2502,6 +2502,7 @@ const initialState = {
   // 포스트 업로드 중
   postAdded: false,
   // 포스트 업로드 성공
+  postRate: false,
   isAddingComment: false,
   addCommentErrorReason: "",
   singlePost: null
@@ -2552,6 +2553,7 @@ const LOAD_POST_FAILURE = "LOAD_POST_FAILURE";
           draft.isAddingPost = true;
           draft.addingPostErrorReason = "";
           draft.postAdded = false;
+          draft.postRate = false;
           break;
         }
 
@@ -2560,6 +2562,7 @@ const LOAD_POST_FAILURE = "LOAD_POST_FAILURE";
           draft.isAddingPost = false;
           draft.mainPosts.unshift(action.data);
           draft.postAdded = true;
+          draft.postRate = true;
           draft.imagePaths = [];
           break;
         }
