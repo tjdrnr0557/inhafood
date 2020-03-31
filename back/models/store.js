@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
       img: {
         type: DataTypes.TEXT,
         allowNull: false
+      },
+      rate: {
+        type: DataTypes.FLOAT
       }
     },
     {

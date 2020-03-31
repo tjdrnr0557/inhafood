@@ -9,6 +9,7 @@ router.get("/:id", async (req, res, next) => {
     db.Store.count().then(c => {
       console.log("There are " + c + " projects!");
     });
+
     const store = await db.Store.findOne({
       where: { id: req.params.id },
       include: [

@@ -11,6 +11,7 @@ import {
   LOAD_POST_FAILURE,
   LOAD_POST_REQUEST
 } from "../reducers/post";
+import Router from "next/router";
 
 function addPostAPI(postData) {
   return axios.post("/post", postData, {
@@ -72,12 +73,14 @@ function* loadPost(action) {
       type: LOAD_POST_SUCCESS,
       data: result.data
     });
+    Router.push("/");
   } catch (e) {
     console.error(e);
     yield put({
       type: LOAD_POST_FAILURE,
       error: e
     });
+    //fail되면 postform에 그대로 있을텐데 로그인이 튕기는지아닌지 확인해볼것
   }
 }
 function* watchLoadPost() {

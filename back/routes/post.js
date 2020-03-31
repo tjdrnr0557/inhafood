@@ -30,6 +30,19 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
       UserId: req.user.id,
       StoreId: req.body.StoreId
     });
+    let avrate;
+    db.Post.sum("rate", { where: { StoreId: req.body.StoreId } }).then(sum => {
+      db.Post.count({
+        where: { StoreId: req.body.StoreId }
+      }).then(c => {
+        avrate = sum / c;
+        avrate.toFixed(1);
+      });
+    });
+    await db.Store.update(
+      { rate: avrate },
+      { where: { id: req.body.StoreId } }
+    );
     //console.log("first NewPost", newPost);
     if (req.body.image) {
       // 이미지 주소를 여러개 올리면 image: [주소1, 주소2]
