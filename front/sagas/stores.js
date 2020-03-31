@@ -49,7 +49,7 @@ function loadStoreAPI(id) {
 function* loadStore(action) {
   try {
     const result = yield call(loadStoreAPI, action.data);
-    console.log("result.data", result.data.Posts);
+    //console.log("result.data", result.data.Posts);
     yield put({
       type: LOAD_STORE_SUCCESS,
       data: result.data

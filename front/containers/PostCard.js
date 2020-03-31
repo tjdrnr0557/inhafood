@@ -61,7 +61,7 @@ const PostCard = ({ post }) => {
       </AvatarWrapper>
       <CommentWrapper>
         <RateDate>
-          <RateWrapper>4.4</RateWrapper>
+          <RateWrapper>{post.rate}</RateWrapper>
           <div style={{ color: "#dbdbdb" }}>{User.createdAt}</div>
         </RateDate>
         <div>{post.content}</div>
