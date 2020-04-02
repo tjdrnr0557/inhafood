@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       charset: "utf8mb4", //  한글+이모티콘
-      collate: "utf8mb4_general_ci"
+      collate: "utf8mb4_general_ci",
+      timestamps: true
     }
   );
   Post.associate = db => {

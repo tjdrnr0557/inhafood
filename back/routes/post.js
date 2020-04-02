@@ -31,14 +31,18 @@ router.post("/", isLoggedIn, upload.none(), async (req, res, next) => {
       StoreId: req.body.StoreId
     });
     let avrate;
-    db.Post.sum("rate", { where: { StoreId: req.body.StoreId } }).then(sum => {
-      db.Post.count({
-        where: { StoreId: req.body.StoreId }
-      }).then(c => {
-        avrate = sum / c;
-        avrate.toFixed(1);
-      });
-    });
+    await db.Post.sum("rate", { where: { StoreId: req.body.StoreId } }).then(
+      async sum => {
+        await db.Post.count({
+          where: { StoreId: req.body.StoreId }
+        }).then(c => {
+          avrate = sum / c;
+          avrate.toFixed(1);
+          console.log("     howaob avrate", avrate);
+        });
+      }
+    );
+    console.log("        avrate", avrate);
     await db.Store.update(
       { rate: avrate },
       { where: { id: req.body.StoreId } }

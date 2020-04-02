@@ -27,6 +27,7 @@ function* addPost(action) {
       type: ADD_POST_SUCCESS,
       data: result.data
     });
+    Router.push("/");
   } catch (e) {
     yield put({
       type: ADD_POST_FAILURE,

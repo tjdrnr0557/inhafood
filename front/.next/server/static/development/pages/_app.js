@@ -2890,6 +2890,7 @@ function* addPost(action) {
       type: _reducers_post__WEBPACK_IMPORTED_MODULE_2__["ADD_POST_SUCCESS"],
       data: result.data
     });
+    next_router__WEBPACK_IMPORTED_MODULE_3___default.a.push("/");
   } catch (e) {
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
       type: _reducers_post__WEBPACK_IMPORTED_MODULE_2__["ADD_POST_FAILURE"],
