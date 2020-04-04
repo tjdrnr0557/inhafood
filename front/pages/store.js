@@ -105,15 +105,13 @@ const Store = ({ id }) => {
         <StoreWrapper>
           <GridWrapper>
             <TdWrapper>주소</TdWrapper>
-            <TdWrapper><img src={"https://map.naver.com/v5/entry/place/1953614429?c=14098977.0732001,4502355.9451389,15,0,0,0,dh"}/></TdWrapper>
+            <TdWrapper></TdWrapper>
             <TdWrapper>전화번호</TdWrapper>
             <TdWrapper>4</TdWrapper>
             <TdWrapper>영업시간</TdWrapper>
             <TdWrapper>6</TdWrapper>
             <TdWrapper>메뉴</TdWrapper>
             <TdWrapper>{store.content}</TdWrapper>
-            <TdWrapper>dd</TdWrapper>
-            <TdWrapper>dd</TdWrapper>
           </GridWrapper>
           <p style={{ textAlign: "right" }}>업데이트 : {store.updatedAt}</p>
         </StoreWrapper>
