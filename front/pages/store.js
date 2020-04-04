@@ -98,14 +98,14 @@ const Store = ({ id }) => {
         <ImgWrapper>
           <NameWrapper>{store.storename}</NameWrapper>
           <Rate allowHalf allowClear={false} value={rateValue} />
-          <PWrapper>평점 3.5</PWrapper>
+          <PWrapper>평점 {store.rate}</PWrapper>
         </ImgWrapper>
       </HeadWrapper>
       <AppLayout>
         <StoreWrapper>
           <GridWrapper>
             <TdWrapper>주소</TdWrapper>
-            <TdWrapper></TdWrapper>
+            <TdWrapper><img src={"https://map.naver.com/v5/entry/place/1953614429?c=14098977.0732001,4502355.9451389,15,0,0,0,dh"}/></TdWrapper>
             <TdWrapper>전화번호</TdWrapper>
             <TdWrapper>4</TdWrapper>
             <TdWrapper>영업시간</TdWrapper>

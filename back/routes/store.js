@@ -24,7 +24,8 @@ router.get("/:id", async (req, res, next) => {
           model: db.Post,
           include: [{ model: db.User, attributes: ["id", "nickname"] }]
         }
-      ]
+      ],
+      order: [[{ model: db.Post }, "createdAt", "DESC"]]
     });
 
     //console.log("@@@@@@@@@@@ in server stores", store);
